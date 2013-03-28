@@ -1,0 +1,137 @@
+-- @nsURI UML2=http://www.eclipse.org/uml2/4.0.0/UML
+-- @path PRO=/securityPatternPlugin/MyProfile.profile.uml
+
+module MyTransformation;
+create OUT : UML2 from IN : UML2, IN1 : PRO;
+helper def: getStereotype(p: UML2!Profile, name: String): UML2!Stereotype =
+	p.ownedStereotype -> select(s | s.name = name) -> first();
+
+helper context UML2!"uml::Element" def: hasStereotype(stereotype: String): Boolean =
+	self.getAppliedStereotypes() -> exists(c | c.name = stereotype);
+
+rule Model {
+	from
+		s: UML2!"uml::Model" in IN
+	to
+		t: UML2!"uml::Model" (
+			--__xmiID__ <- s.__xmiID__,
+			name <- s.name.debug('Model'),
+			visibility <- s.visibility,
+			viewpoint <- s.viewpoint,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			packageMerge <- s.packageMerge,
+			packagedElement <- s.packagedElement,
+			profileApplication <- s.profileApplication
+		)
+}
+rule ProfileApplication {
+    from s : UML2!"uml::ProfileApplication" in IN
+	      to t : UML2!"uml::ProfileApplication" (
+	        __xmiID__ <- s.__xmiID__,
+	        isStrict <- s.isStrict,
+	        eAnnotations <- s.eAnnotations,
+	        ownedComment <- s.ownedComment,
+	        appliedProfile <- s.appliedProfile)
+	}
+
+rule Package {
+	from
+		s: UML2!"uml::Package" in IN (
+			s.oclIsTypeOf(UML2!"uml::Package")
+		)
+	to
+		t: UML2!"uml::Package" (
+			-- __xmiID__ <- s.__xmiID__,
+			name <- s.name.debug('Package'),
+			visibility <- s.visibility,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			packageMerge <- s.packageMerge,
+			packagedElement <- s.packagedElement,
+			profileApplication <- s.profileApplication,
+			importedMember <- s.importedMember,
+			URI <- s.URI,
+			nestedPackage <- s.nestedPackage,
+			nestingPackage <- s.nestingPackage,
+			ownedRule <- s.ownedRule
+		) ---do section to apply MyPro Profile
+	
+	do {    				
+--					t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='MyProfile') -> first());
+--					thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = 'MyProfile') -> first();
+--					t.debug('Application du profile');
+t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='MyProfile') -> first());
+thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = 'MyProfile') -> first();
+					 		
+				}
+}
+
+rule Component {
+	from
+		s: UML2!"uml::Component" in IN
+	to
+		t: UML2!"uml::Component" (
+			name <- s.name.debug('Component'),
+			visibility <- s.visibility,
+			isLeaf <- s.isLeaf,
+			isAbstract <- s.isAbstract,
+			isActive <- s.isActive,
+			isIndirectlyInstantiated <- s.isIndirectlyInstantiated,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			generalization <- s.generalization,
+			powertypeExtent <- s.powertypeExtent,
+			redefinedClassifier <- s.redefinedClassifier,
+			substitution <- s.substitution,
+			representation <- s.representation,
+			collaborationUse <- s.collaborationUse,
+			ownedUseCase <- s.ownedUseCase,
+			useCase <- s.useCase,
+			ownedAttribute <- s.ownedAttribute,
+			ownedConnector <- s.ownedConnector,
+			ownedBehavior <- s.ownedBehavior,
+			classifierBehavior <- s.classifierBehavior,
+			interfaceRealization <- s.interfaceRealization,
+			nestedClassifier <- s.nestedClassifier,
+			ownedOperation <- s.ownedOperation,
+			ownedReception <- s.ownedReception,
+			packagedElement <- s.packagedElement,
+			realization <- s.realization
+		)
+	do{
+
+
+if(s.name = 'Comp1')
+{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'Str1'));}
+if(s.name = 'Comp2')
+{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'Str2'));}
+
+
+	}
+}
+
