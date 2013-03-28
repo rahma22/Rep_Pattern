@@ -147,7 +147,6 @@ public class FramePattronChoisi extends JFrame {
 				 */
 				profileApplicationCommande="t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='"+FrameDebut.getProfile()+"') -> first());\n" +
 						"thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = '"+FrameDebut.getProfile()+"') -> first();";
-				System.out.println(profileApplicationCommande);
 				/*
 				 * *construct the command (applyStereotype)to insert into the transformation
 				 */
@@ -159,10 +158,10 @@ public class FramePattronChoisi extends JFrame {
 				/*
 				 * * Insert the command into the transformation
 				 */
-				
+				System.out.println(System.getProperty("user.dir" ));
 				/*create an ReplaceString Object with the transformation path as a parametre.
 				 * The transformation file is located in an ATL Project to ensure updating the asm file associated to the atl file.*/
-				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/../testATL/MyTransformation.atl");
+				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/../testATL/MyTransformation.asm");
 				
 				try {
 				/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
@@ -204,7 +203,7 @@ public class FramePattronChoisi extends JFrame {
 				ResourceSet RESOURCE_SET = new ResourceSetImpl();
 				UMLResourcesUtil.init(RESOURCE_SET);
 				URI baseUri = 
-						URI.createURI("jar:file:"+System.getProperty("user.dir" )+"/lib/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar!/");
+						URI.createURI("jar:file:lib/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar!/");
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.LIBRARIES_PATHMAP ), 
 						baseUri.appendSegment( "libraries" ).appendSegment( "" ));
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.METAMODELS_PATHMAP 

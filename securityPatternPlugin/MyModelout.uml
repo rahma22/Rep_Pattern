@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:MyProfile="http://profile/schemas/MyProfile/_NM7HYJFkEeKZ9N2CzABjBw/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://profile/schemas/MyProfile/_NM7HYJFkEeKZ9N2CzABjBw/0 MyProfile.profile.uml#_NM-xwJFkEeKZ9N2CzABjBw">
-  <uml:Model xmi:id="_GAMP4JeDEeK7a6AnkBU9MQ" name="model">
-    <packagedElement xmi:type="uml:Package" xmi:id="_GAM28JeDEeK7a6AnkBU9MQ" name="MyPackage">
-      <packagedElement xmi:type="uml:Component" xmi:id="_GAM28ZeDEeK7a6AnkBU9MQ" name="hello dareling"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_GAM28peDEeK7a6AnkBU9MQ" name="Comp2"/>
-      <profileApplication xmi:id="_GAM285eDEeK7a6AnkBU9MQ">
-        <eAnnotations xmi:id="_GAM29JeDEeK7a6AnkBU9MQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+  <uml:Model xmi:id="_QlA3sJe-EeKBl_PWL273_Q" name="model">
+    <packagedElement xmi:type="uml:Package" xmi:id="_QlA3sZe-EeKBl_PWL273_Q" name="MyPackage">
+      <packagedElement xmi:type="uml:Component" xmi:id="_QlA3spe-EeKBl_PWL273_Q" name="Comp1"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_QlA3s5e-EeKBl_PWL273_Q" name="Comp2"/>
+      <profileApplication xmi:id="_QlA3tJe-EeKBl_PWL273_Q">
+        <eAnnotations xmi:id="_QlA3tZe-EeKBl_PWL273_Q" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <references xmi:type="ecore:EPackage" href="MyProfile.profile.uml#_NM-xwJFkEeKZ9N2CzABjBw"/>
         </eAnnotations>
         <appliedProfile href="MyProfile.profile.uml#_5zU1cJFjEeKZ9N2CzABjBw"/>
       </profileApplication>
     </packagedElement>
   </uml:Model>
-  <MyProfile:Str1 xmi:id="_GAM29ZeDEeK7a6AnkBU9MQ" base_Component="_GAM28ZeDEeK7a6AnkBU9MQ"/>
-  <MyProfile:Str2 xmi:id="_GAM29peDEeK7a6AnkBU9MQ" base_Component="_GAM28peDEeK7a6AnkBU9MQ"/>
+  <MyProfile:Str1 xmi:id="_QlA3tpe-EeKBl_PWL273_Q" base_Component="_QlA3spe-EeKBl_PWL273_Q"/>
+  <MyProfile:Str2 xmi:id="_QlA3t5e-EeKBl_PWL273_Q" base_Component="_QlA3s5e-EeKBl_PWL273_Q"/>
 </xmi:XMI>

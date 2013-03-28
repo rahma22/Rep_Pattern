@@ -329,9 +329,6 @@
 		<constant value="235"/>
 		<constant value="242"/>
 		<constant value="Str2"/>
-		<constant value="248"/>
-		<constant value="251"/>
-		<constant value="hello dareling"/>
 		<constant value="91:12-91:13"/>
 		<constant value="91:12-91:18"/>
 		<constant value="91:25-91:36"/>
@@ -460,14 +457,6 @@
 		<constant value="132:20-132:77"/>
 		<constant value="132:2-132:79"/>
 		<constant value="131:1-132:80"/>
-		<constant value="134:4-134:5"/>
-		<constant value="134:4-134:10"/>
-		<constant value="134:11-134:18"/>
-		<constant value="134:4-134:18"/>
-		<constant value="134:19-134:20"/>
-		<constant value="134:28-134:44"/>
-		<constant value="134:19-134:45"/>
-		<constant value="134:1-134:45"/>
 		<constant value="126:2-135:3"/>
 	</cp>
 	<field name="1" type="2"/>
@@ -1677,161 +1666,144 @@
 			<push arg="327"/>
 			<call arg="322"/>
 			<pcall arg="323"/>
-			<load arg="56"/>
-			<get arg="38"/>
-			<push arg="318"/>
-			<call arg="57"/>
-			<if arg="328"/>
-			<goto arg="329"/>
-			<load arg="56"/>
-			<push arg="330"/>
-			<set arg="38"/>
 		</code>
 		<linenumbertable>
-			<lne id="331" begin="11" end="11"/>
-			<lne id="332" begin="11" end="12"/>
-			<lne id="333" begin="13" end="13"/>
-			<lne id="334" begin="11" end="14"/>
-			<lne id="335" begin="9" end="16"/>
-			<lne id="336" begin="19" end="19"/>
-			<lne id="337" begin="19" end="20"/>
-			<lne id="338" begin="17" end="22"/>
-			<lne id="339" begin="25" end="25"/>
-			<lne id="340" begin="25" end="26"/>
-			<lne id="341" begin="23" end="28"/>
-			<lne id="342" begin="31" end="31"/>
-			<lne id="343" begin="31" end="32"/>
-			<lne id="344" begin="29" end="34"/>
-			<lne id="345" begin="37" end="37"/>
-			<lne id="346" begin="37" end="38"/>
-			<lne id="347" begin="35" end="40"/>
-			<lne id="348" begin="43" end="43"/>
-			<lne id="349" begin="43" end="44"/>
-			<lne id="350" begin="41" end="46"/>
-			<lne id="351" begin="49" end="49"/>
-			<lne id="352" begin="49" end="50"/>
-			<lne id="353" begin="47" end="52"/>
-			<lne id="354" begin="55" end="55"/>
-			<lne id="355" begin="55" end="56"/>
-			<lne id="356" begin="53" end="58"/>
-			<lne id="357" begin="61" end="61"/>
-			<lne id="358" begin="61" end="62"/>
-			<lne id="359" begin="59" end="64"/>
-			<lne id="360" begin="67" end="67"/>
-			<lne id="361" begin="67" end="68"/>
-			<lne id="362" begin="65" end="70"/>
-			<lne id="363" begin="73" end="73"/>
-			<lne id="364" begin="73" end="74"/>
-			<lne id="365" begin="71" end="76"/>
-			<lne id="366" begin="79" end="79"/>
-			<lne id="367" begin="79" end="80"/>
-			<lne id="368" begin="77" end="82"/>
-			<lne id="369" begin="85" end="85"/>
-			<lne id="370" begin="85" end="86"/>
-			<lne id="371" begin="83" end="88"/>
-			<lne id="372" begin="91" end="91"/>
-			<lne id="373" begin="91" end="92"/>
-			<lne id="374" begin="89" end="94"/>
-			<lne id="375" begin="97" end="97"/>
-			<lne id="376" begin="97" end="98"/>
-			<lne id="377" begin="95" end="100"/>
-			<lne id="378" begin="103" end="103"/>
-			<lne id="379" begin="103" end="104"/>
-			<lne id="380" begin="101" end="106"/>
-			<lne id="381" begin="109" end="109"/>
-			<lne id="382" begin="109" end="110"/>
-			<lne id="383" begin="107" end="112"/>
-			<lne id="384" begin="115" end="115"/>
-			<lne id="385" begin="115" end="116"/>
-			<lne id="386" begin="113" end="118"/>
-			<lne id="387" begin="121" end="121"/>
-			<lne id="388" begin="121" end="122"/>
-			<lne id="389" begin="119" end="124"/>
-			<lne id="390" begin="127" end="127"/>
-			<lne id="391" begin="127" end="128"/>
-			<lne id="392" begin="125" end="130"/>
-			<lne id="393" begin="133" end="133"/>
-			<lne id="394" begin="133" end="134"/>
-			<lne id="395" begin="131" end="136"/>
-			<lne id="396" begin="139" end="139"/>
-			<lne id="397" begin="139" end="140"/>
-			<lne id="398" begin="137" end="142"/>
-			<lne id="399" begin="145" end="145"/>
-			<lne id="400" begin="145" end="146"/>
-			<lne id="401" begin="143" end="148"/>
-			<lne id="402" begin="151" end="151"/>
-			<lne id="403" begin="151" end="152"/>
-			<lne id="404" begin="149" end="154"/>
-			<lne id="405" begin="157" end="157"/>
-			<lne id="406" begin="157" end="158"/>
-			<lne id="407" begin="155" end="160"/>
-			<lne id="408" begin="163" end="163"/>
-			<lne id="409" begin="163" end="164"/>
-			<lne id="410" begin="161" end="166"/>
-			<lne id="411" begin="169" end="169"/>
-			<lne id="412" begin="169" end="170"/>
-			<lne id="413" begin="167" end="172"/>
-			<lne id="414" begin="175" end="175"/>
-			<lne id="415" begin="175" end="176"/>
-			<lne id="416" begin="173" end="178"/>
-			<lne id="417" begin="181" end="181"/>
-			<lne id="418" begin="181" end="182"/>
-			<lne id="419" begin="179" end="184"/>
-			<lne id="420" begin="187" end="187"/>
-			<lne id="421" begin="187" end="188"/>
-			<lne id="422" begin="185" end="190"/>
-			<lne id="423" begin="193" end="193"/>
-			<lne id="424" begin="193" end="194"/>
-			<lne id="425" begin="191" end="196"/>
-			<lne id="426" begin="199" end="199"/>
-			<lne id="427" begin="199" end="200"/>
-			<lne id="428" begin="197" end="202"/>
-			<lne id="429" begin="205" end="205"/>
-			<lne id="430" begin="205" end="206"/>
-			<lne id="431" begin="203" end="208"/>
-			<lne id="432" begin="211" end="211"/>
-			<lne id="433" begin="211" end="212"/>
-			<lne id="434" begin="209" end="214"/>
+			<lne id="328" begin="11" end="11"/>
+			<lne id="329" begin="11" end="12"/>
+			<lne id="330" begin="13" end="13"/>
+			<lne id="331" begin="11" end="14"/>
+			<lne id="332" begin="9" end="16"/>
+			<lne id="333" begin="19" end="19"/>
+			<lne id="334" begin="19" end="20"/>
+			<lne id="335" begin="17" end="22"/>
+			<lne id="336" begin="25" end="25"/>
+			<lne id="337" begin="25" end="26"/>
+			<lne id="338" begin="23" end="28"/>
+			<lne id="339" begin="31" end="31"/>
+			<lne id="340" begin="31" end="32"/>
+			<lne id="341" begin="29" end="34"/>
+			<lne id="342" begin="37" end="37"/>
+			<lne id="343" begin="37" end="38"/>
+			<lne id="344" begin="35" end="40"/>
+			<lne id="345" begin="43" end="43"/>
+			<lne id="346" begin="43" end="44"/>
+			<lne id="347" begin="41" end="46"/>
+			<lne id="348" begin="49" end="49"/>
+			<lne id="349" begin="49" end="50"/>
+			<lne id="350" begin="47" end="52"/>
+			<lne id="351" begin="55" end="55"/>
+			<lne id="352" begin="55" end="56"/>
+			<lne id="353" begin="53" end="58"/>
+			<lne id="354" begin="61" end="61"/>
+			<lne id="355" begin="61" end="62"/>
+			<lne id="356" begin="59" end="64"/>
+			<lne id="357" begin="67" end="67"/>
+			<lne id="358" begin="67" end="68"/>
+			<lne id="359" begin="65" end="70"/>
+			<lne id="360" begin="73" end="73"/>
+			<lne id="361" begin="73" end="74"/>
+			<lne id="362" begin="71" end="76"/>
+			<lne id="363" begin="79" end="79"/>
+			<lne id="364" begin="79" end="80"/>
+			<lne id="365" begin="77" end="82"/>
+			<lne id="366" begin="85" end="85"/>
+			<lne id="367" begin="85" end="86"/>
+			<lne id="368" begin="83" end="88"/>
+			<lne id="369" begin="91" end="91"/>
+			<lne id="370" begin="91" end="92"/>
+			<lne id="371" begin="89" end="94"/>
+			<lne id="372" begin="97" end="97"/>
+			<lne id="373" begin="97" end="98"/>
+			<lne id="374" begin="95" end="100"/>
+			<lne id="375" begin="103" end="103"/>
+			<lne id="376" begin="103" end="104"/>
+			<lne id="377" begin="101" end="106"/>
+			<lne id="378" begin="109" end="109"/>
+			<lne id="379" begin="109" end="110"/>
+			<lne id="380" begin="107" end="112"/>
+			<lne id="381" begin="115" end="115"/>
+			<lne id="382" begin="115" end="116"/>
+			<lne id="383" begin="113" end="118"/>
+			<lne id="384" begin="121" end="121"/>
+			<lne id="385" begin="121" end="122"/>
+			<lne id="386" begin="119" end="124"/>
+			<lne id="387" begin="127" end="127"/>
+			<lne id="388" begin="127" end="128"/>
+			<lne id="389" begin="125" end="130"/>
+			<lne id="390" begin="133" end="133"/>
+			<lne id="391" begin="133" end="134"/>
+			<lne id="392" begin="131" end="136"/>
+			<lne id="393" begin="139" end="139"/>
+			<lne id="394" begin="139" end="140"/>
+			<lne id="395" begin="137" end="142"/>
+			<lne id="396" begin="145" end="145"/>
+			<lne id="397" begin="145" end="146"/>
+			<lne id="398" begin="143" end="148"/>
+			<lne id="399" begin="151" end="151"/>
+			<lne id="400" begin="151" end="152"/>
+			<lne id="401" begin="149" end="154"/>
+			<lne id="402" begin="157" end="157"/>
+			<lne id="403" begin="157" end="158"/>
+			<lne id="404" begin="155" end="160"/>
+			<lne id="405" begin="163" end="163"/>
+			<lne id="406" begin="163" end="164"/>
+			<lne id="407" begin="161" end="166"/>
+			<lne id="408" begin="169" end="169"/>
+			<lne id="409" begin="169" end="170"/>
+			<lne id="410" begin="167" end="172"/>
+			<lne id="411" begin="175" end="175"/>
+			<lne id="412" begin="175" end="176"/>
+			<lne id="413" begin="173" end="178"/>
+			<lne id="414" begin="181" end="181"/>
+			<lne id="415" begin="181" end="182"/>
+			<lne id="416" begin="179" end="184"/>
+			<lne id="417" begin="187" end="187"/>
+			<lne id="418" begin="187" end="188"/>
+			<lne id="419" begin="185" end="190"/>
+			<lne id="420" begin="193" end="193"/>
+			<lne id="421" begin="193" end="194"/>
+			<lne id="422" begin="191" end="196"/>
+			<lne id="423" begin="199" end="199"/>
+			<lne id="424" begin="199" end="200"/>
+			<lne id="425" begin="197" end="202"/>
+			<lne id="426" begin="205" end="205"/>
+			<lne id="427" begin="205" end="206"/>
+			<lne id="428" begin="203" end="208"/>
+			<lne id="429" begin="211" end="211"/>
+			<lne id="430" begin="211" end="212"/>
+			<lne id="431" begin="209" end="214"/>
 			<lne id="295" begin="8" end="215"/>
-			<lne id="435" begin="216" end="216"/>
-			<lne id="436" begin="216" end="217"/>
-			<lne id="437" begin="218" end="218"/>
-			<lne id="438" begin="216" end="219"/>
-			<lne id="439" begin="222" end="222"/>
-			<lne id="440" begin="223" end="223"/>
-			<lne id="441" begin="224" end="224"/>
-			<lne id="442" begin="224" end="225"/>
-			<lne id="443" begin="226" end="226"/>
-			<lne id="444" begin="223" end="227"/>
-			<lne id="445" begin="222" end="228"/>
-			<lne id="446" begin="216" end="228"/>
-			<lne id="447" begin="229" end="229"/>
-			<lne id="448" begin="229" end="230"/>
-			<lne id="449" begin="231" end="231"/>
-			<lne id="450" begin="229" end="232"/>
-			<lne id="451" begin="235" end="235"/>
-			<lne id="452" begin="236" end="236"/>
-			<lne id="453" begin="237" end="237"/>
-			<lne id="454" begin="237" end="238"/>
-			<lne id="455" begin="239" end="239"/>
-			<lne id="456" begin="236" end="240"/>
-			<lne id="457" begin="235" end="241"/>
-			<lne id="458" begin="229" end="241"/>
-			<lne id="459" begin="242" end="242"/>
-			<lne id="460" begin="242" end="243"/>
-			<lne id="461" begin="244" end="244"/>
-			<lne id="462" begin="242" end="245"/>
-			<lne id="463" begin="248" end="248"/>
-			<lne id="464" begin="249" end="249"/>
-			<lne id="465" begin="248" end="250"/>
-			<lne id="466" begin="242" end="250"/>
-			<lne id="467" begin="216" end="250"/>
+			<lne id="432" begin="216" end="216"/>
+			<lne id="433" begin="216" end="217"/>
+			<lne id="434" begin="218" end="218"/>
+			<lne id="435" begin="216" end="219"/>
+			<lne id="436" begin="222" end="222"/>
+			<lne id="437" begin="223" end="223"/>
+			<lne id="438" begin="224" end="224"/>
+			<lne id="439" begin="224" end="225"/>
+			<lne id="440" begin="226" end="226"/>
+			<lne id="441" begin="223" end="227"/>
+			<lne id="442" begin="222" end="228"/>
+			<lne id="443" begin="216" end="228"/>
+			<lne id="444" begin="229" end="229"/>
+			<lne id="445" begin="229" end="230"/>
+			<lne id="446" begin="231" end="231"/>
+			<lne id="447" begin="229" end="232"/>
+			<lne id="448" begin="235" end="235"/>
+			<lne id="449" begin="236" end="236"/>
+			<lne id="450" begin="237" end="237"/>
+			<lne id="451" begin="237" end="238"/>
+			<lne id="452" begin="239" end="239"/>
+			<lne id="453" begin="236" end="240"/>
+			<lne id="454" begin="235" end="241"/>
+			<lne id="455" begin="229" end="241"/>
+			<lne id="456" begin="216" end="241"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="3" name="93" begin="7" end="250"/>
-			<lve slot="2" name="69" begin="3" end="250"/>
-			<lve slot="0" name="17" begin="0" end="250"/>
-			<lve slot="1" name="167" begin="0" end="250"/>
+			<lve slot="3" name="93" begin="7" end="241"/>
+			<lve slot="2" name="69" begin="3" end="241"/>
+			<lve slot="0" name="17" begin="0" end="241"/>
+			<lve slot="1" name="167" begin="0" end="241"/>
 		</localvariabletable>
 	</operation>
 </asm>

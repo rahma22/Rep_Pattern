@@ -3,42 +3,34 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/jgoodies-forms.jar" sourcepath="lib/jgoodies-forms-src.zip">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/om.yousr.plugin.essai1/lib/jgoodies-forms-javadoc.zip!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/jgoodies-common.jar" sourcepath="lib/jgoodies-common-src.zip">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/om.yousr.plugin.essai1/lib/jgoodies-common-javadoc.zip!/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.m2m.atl.common_3.3.1.v201209061455.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.m2m.atl.core.emf_3.3.1.v201209061455.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.m2m.atl.core_3.3.1.v201209061455.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.m2m.atl.engine.emfvm_3.3.1.v201209061455.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml_4.0.2.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.core.runtime_3.8.0.v20120912-155025.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.osgi_3.8.2.v20130124-134944.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.core.jobs_3.5.300.v20120912-155018.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.101.v20130108-163257/runtime_registry_compatibility.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.equinox.preferences_3.5.1.v20121031-182809.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.equinox.app_1.3.100.v20120522-1841.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.emf.common_2.8.0.v20130125-0546.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.common_1.7.0.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.types_1.0.0.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.emf.mapping.ecore2xml_2.7.0.v20130125-0826.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.emf.validation_1.4.0.v20100428-2315.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.core.resources_3.8.1.v20121114-124432.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.profile.l2_1.0.1.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.profile.l3_1.0.1.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.source_4.0.2.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.profile.l2.source_1.0.1.v20130114-0902.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ACER/Desktop/pfe/SpécialPFE/Outils de travail/eclipse-modeling-juno-SR2-win32-x86_64/eclipse/plugins/org.eclipse.uml2.uml.profile.l3.source_1.0.1.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-common.jar"/>
+	<classpathentry kind="lib" path="lib/jgoodies-forms.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.core.contenttype_3.4.200.v20120523-2004.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.core.jobs_3.5.300.v20120912-155018.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.core.resources_3.8.1.v20121114-124432.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.core.runtime_3.8.0.v20120912-155025.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.common_2.8.0.v20130125-0546.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.mapping.ecore2xml_2.7.0.v20130125-0826.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.validation_1.4.0.v20100428-2315.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.equinox.app_1.3.100.v20120522-1841.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.equinox.common_3.6.100.v20120522-1841.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.equinox.preferences_3.5.1.v20121031-182809.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.m2m.atl.common_3.3.1.v201209061455.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.m2m.atl.core_3.3.1.v201209061455.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.m2m.atl.core.emf_3.3.1.v201209061455.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.m2m.atl.engine.emfvm_3.3.1.v201209061455.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.osgi_3.8.2.v20130124-134944.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.common_1.7.0.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.types_1.0.0.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml_4.0.2.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml.profile.l2_1.0.1.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml.profile.l2.source_1.0.1.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml.profile.l3_1.0.1.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml.profile.l3.source_1.0.1.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.uml2.uml.source_4.0.2.v20130114-0902.jar"/>
+	<classpathentry kind="lib" path="lib/runtime_registry_compatibility.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
