@@ -1,6 +1,8 @@
 .metadata
+
 analyseur
 copieFichier
+parseur
+
 essai*
 test*
-parseur
