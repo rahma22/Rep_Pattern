@@ -107,7 +107,7 @@ public class FramePattronChoisi extends JFrame {
 		getContentPane().add(btnAppliquerPatron);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ACER\\Desktop\\pfe\\Sp\u00E9cialPFE\\Notes\\travaux.png"));
+		//lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ACER\\Desktop\\pfe\\Sp\u00E9cialPFE\\Notes\\travaux.png"));
 		lblNewLabel.setBounds(305, 144, 125, 99);
 		
 		getContentPane().add(lblNewLabel);
@@ -204,7 +204,7 @@ public class FramePattronChoisi extends JFrame {
 				ResourceSet RESOURCE_SET = new ResourceSetImpl();
 				UMLResourcesUtil.init(RESOURCE_SET);
 				URI baseUri = 
-						URI.createURI("jar:file:/E:/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar!/");
+						URI.createURI("jar:file:"+System.getProperty("user.dir" )+"/lib/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar!/");
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.LIBRARIES_PATHMAP ), 
 						baseUri.appendSegment( "libraries" ).appendSegment( "" ));
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.METAMODELS_PATHMAP 
