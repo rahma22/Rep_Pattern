@@ -63,24 +63,24 @@ public class FramePattronChoisi extends JFrame {
 	 */
 	public FramePattronChoisi() {
 		/*frame parameters*/
-		setTitle("Application du patron");//frame title
+		setTitle("Pattern Application");//frame title
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit the program when closing the frame
-		setBounds(100, 100, 456, 326); //frame bounds
+		setBounds(100, 100, 495, 326); //frame bounds
 		getContentPane().setLayout(null);// frame layout
 		
 		/*setting the parameters of the indication label */
-		JLabel lblVeuillezChoisirLes = new JLabel("Veuillez choisir les st\u00E9r\u00E9otypes d'entr\u00E9es pour le patron RBAC : ");
-		lblVeuillezChoisirLes.setBounds(26, 54, 386, 14);
+		JLabel lblVeuillezChoisirLes = new JLabel("Enter User and ProtectionObject stereotypes for RBAC pattern application: ");
+		lblVeuillezChoisirLes.setBounds(10, 11, 459, 14);
 		getContentPane().add(lblVeuillezChoisirLes);
 		
 		/*setting the parameters of the "Ajouter stéréotype" button */
-		JButton btnAjouterComposant = new JButton("Ajouter st\u00E9r\u00E9otype");
+		JButton btnAjouterComposant = new JButton("Add stereotype");
 		btnAjouterComposant.setIcon(new ImageIcon("icons/ajout.png"));
-		btnAjouterComposant.setBounds(140, 174, 147, 23);
+		btnAjouterComposant.setBounds(161, 158, 147, 23);
 		getContentPane().add(btnAjouterComposant);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(68, 79, 283, 68);
+		scrollPane.setBounds(94, 52, 283, 95);
 		getContentPane().add(scrollPane);
 		
 		/*setting the parameters of the table   */
@@ -93,7 +93,7 @@ public class FramePattronChoisi extends JFrame {
 				{null, null},
 			},
 			new String[] {
-				"Composant", "St\u00E9r\u00E9otype"
+				"Component", "Stereotype"
 			}
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -102,26 +102,27 @@ public class FramePattronChoisi extends JFrame {
 		table.getColumnModel().getColumn(1).setMinWidth(25);
 
 		/*setting the parameters of the "Appliquer Patron" button */
-		JButton btnAppliquerPatron = new JButton("Appliquer Patron ");
-		btnAppliquerPatron.setBounds(297, 254, 133, 23);
+		JButton btnAppliquerPatron = new JButton("Apply Pattern");
+		btnAppliquerPatron.setBounds(336, 254, 133, 23);
 		getContentPane().add(btnAppliquerPatron);
 		
-		JLabel lblNewLabel = new JLabel("");
-		//lblNewLabel.setIcon(new ImageIcon("C:\\Users\\ACER\\Desktop\\pfe\\Sp\u00E9cialPFE\\Notes\\travaux.png"));
-		lblNewLabel.setBounds(305, 144, 125, 99);
+		JButton btnNewButton = new JButton("< Back");
 		
-		getContentPane().add(lblNewLabel);
+		btnNewButton.setBounds(194, 254, 133, 23);
+		getContentPane().add(btnNewButton);
 //		TableColumn CompColumn = table.getColumnModel().getColumn(0);
 		TableColumn CompColumn = table.getColumnModel().getColumn(0);
 		JComboBox comboComp = new JComboBox();
-		comboComp.addItem("Comp1");
-		comboComp.addItem("Comp2");
+		comboComp.addItem("Doctors");
+		comboComp.addItem("Patients");
+		comboComp.addItem("Employees");
+		comboComp.addItem("ManagementSystem");
 		CompColumn.setCellEditor(new DefaultCellEditor(comboComp));
 //		TableColumn SterColumn = table.getColumnModel().getColumn(1);
 		TableColumn SterColumn = table.getColumnModel().getColumn(1);
 		JComboBox comboSter = new JComboBox();
-		comboSter.addItem("Str1");
-		comboSter.addItem("Str2");
+		comboSter.addItem("RBAC_User");
+		comboSter.addItem("RBAC_ProtectionObject");
 		SterColumn.setCellEditor(new DefaultCellEditor(comboSter));
 		
 		/*
@@ -134,13 +135,23 @@ public class FramePattronChoisi extends JFrame {
 		});
 		
 		/*
+		 * * actionPerformed of "< Back" button
+		 */
+		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				hide();
+				new FrameDebut().show();
+			}
+		});
+		
+		/*
 		 * *actionPerformed of "Appliquer Patron" button
 		 */
 		btnAppliquerPatron.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				
-				new FrameDebut();
 				new FrameDebut();
 				/*
 				 * *construct the command (applyProfile)to insert into the transformation
@@ -158,17 +169,17 @@ public class FramePattronChoisi extends JFrame {
 				/*
 				 * * Insert the command into the transformation
 				 */
-				System.out.println(System.getProperty("user.dir" ));
-				/*create an ReplaceString Object with the transformation path as a parametre.
+				System.out.println(System.getProperty("user.dir" )+"\\..\\testATL\\RBACTransformation.asm");
+				/*create an ReplaceString Object with the transformation path as a parameter.
 				 * The transformation file is located in an ATL Project to ensure updating the asm file associated to the atl file.*/
-				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/../testATL/MyTransformation.asm");
+				ReplaceString R=new ReplaceString("E:/MyNewJunoWS/testATL/RBACTransformation.atl");
 				
 				try {
 				/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
-					R.MethodeRemplacer("---REMPLACER_PROFIL---", profileApplicationCommande);
+					R.MethodeRemplacer("---REPLACE_PROFIL---", profileApplicationCommande);
 				
 				/*Replace the String "---REMPLACER_STEREO---" by the String stereotypeApplicationCommande (stereotypeApplicationCommande is the ATL command which apply stereotypes to the input model) */	
-					R.MethodeRemplacer("---REMPLACER_STEREO---",stereotypeApplicationCommande);
+					R.MethodeRemplacer("---REPLACE_STEREO---",stereotypeApplicationCommande);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -182,10 +193,10 @@ public class FramePattronChoisi extends JFrame {
 				
 				try {
 				/*Copying the asm file (related to the atl transformation) from the ATL project to the plugin project*/
-					c.copy(System.getProperty("user.dir" )+"/../testATL/MyTransformation.asm",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/MyTransformation.asm");
+					c.copy(System.getProperty("user.dir" )+"/../testATL/RBACTransformation.asm",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.asm");
 					
 				/*Copying the atl file from the ATL project to the plugin project*/
-					c.copy(System.getProperty("user.dir" )+"/../testATL/MyTransformation.atl",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/MyTransformation.atl");
+					c.copy(System.getProperty("user.dir" )+"/../testATL/RBACTransformation.atl",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -214,16 +225,16 @@ public class FramePattronChoisi extends JFrame {
 				/*running the transformation*/
 				try {					
 				/*create a new runner (object associated to the transformation class) */
-						MyTransformation runner = new MyTransformation();
+						RBACTransformation runner = new RBACTransformation();
 						
 				/*load the inputs required in the transformation (the model & the profile) */
-						runner.loadModels("MyModel.uml", "MyProfile.profile.uml");
+						runner.loadModels("MedicalManagementModel.uml", "RBAC_Profile.profile.uml");
 						
 				/*Apply the transformation*/
-						runner.doMyTransformation(new NullProgressMonitor());
+						runner.doRBAC_Transformation(new NullProgressMonitor());
 						
 				/*save the generated output model*/
-						runner.saveModels("MyModelout.uml");
+						runner.saveModels("MedicalManagementModelout.uml");
 					
 				} catch (ATLCoreException e) {
 					e.printStackTrace();
@@ -237,10 +248,10 @@ public class FramePattronChoisi extends JFrame {
 				JOptionPane.showMessageDialog(null,"Transformation terminée");
 				
 				/*
-				 * Delete temporary files (MyTransformation.atl and MyTransformation.asm)
+				 * Delete temporary files (RBACTransformation.atl and RBACTransformation.asm)
 				 */
-//				File ATLFile = new File("E:/MyNewJunoWS/securityPatternPlugin/src/securityPatternPlugin/handlers/MyTransformation.atl");
-//				File ASMFile = new File("E:/MyNewJunoWS/securityPatternPlugin/src/securityPatternPlugin/handlers/MyTransformation.asm");
+//				File ATLFile = new File("E:/MyNewJunoWS/securityPatternPlugin/src/securityPatternPlugin/handlers/RBACTransformation.atl");
+//				File ASMFile = new File("E:/MyNewJunoWS/securityPatternPlugin/src/securityPatternPlugin/handlers/RBACTransformation.asm");
 //				ATLFile.delete();
 //				ASMFile.delete();
 				
@@ -248,8 +259,8 @@ public class FramePattronChoisi extends JFrame {
 				 * restore Transformations
 				 */
 //				try {
-//					c.copy("E:/MyNewJunoWS/testATL/TransformationBrute/MyTransformation.atl","E:/MyNewJunoWS/testATL/MyTransformation.atl");
-//					c.copy("E:/MyNewJunoWS/testATL/TransformationBrute/MyTransformation.asm","E:/MyNewJunoWS/testATL/MyTransformation.asm");
+//					c.copy("E:/MyNewJunoWS/testATL/TransformationBrute/RBACTransformation.atl","E:/MyNewJunoWS/testATL/RBACTransformation.atl");
+//					c.copy("E:/MyNewJunoWS/testATL/TransformationBrute/RBACTransformation.asm","E:/MyNewJunoWS/testATL/RBACTransformation.asm");
 //				} catch (IOException e) {
 //					e.printStackTrace();
 //				}

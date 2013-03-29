@@ -1,5 +1,8 @@
 package securityPatternPlugin.handlers;
 
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -24,15 +27,10 @@ public class SampleHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 
-	@SuppressWarnings("deprecation")
+
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		/*++++++++++++++++++++>> A ELIMINER <<+++++++++++++++++++++++++++++++
-		 * IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(
-				window.getShell(),
-				"Essai1",
-				"This menu Provides you different Security Patterns to apply to your \n UML component diagram");*/
-		new FrameDebut().show();
+	new EventDispatcher();
+	EventDispatcher.main(null);
 		return null;
 	}
 }
