@@ -9,6 +9,7 @@ import java.util.Properties;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EPackage;
@@ -34,6 +35,32 @@ public class RBACTransformation {
 	protected IModel in1Model;	
 	protected IModel outModel;
 	
+	/**
+	 * The main method.
+	 * 
+	 * @param args
+	 *            are the arguments
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		try {
+			if (args.length < 3) {
+				System.out.println("Arguments not valid : {IN_model_path, IN1_model_path, OUT_model_path}.");
+			} else {
+				RBACTransformation runner = new RBACTransformation();
+				runner.loadModels(args[0], args[1]);
+				runner.doRBACTransformation(new NullProgressMonitor());
+				runner.saveModels(args[2]);
+			}
+		} catch (ATLCoreException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ATLExecutionException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public RBACTransformation() throws IOException {
 		properties = new Properties();
 		properties.load(getFileURL("RBACTransformation.properties").openStream());
@@ -96,7 +123,7 @@ public class RBACTransformation {
 	 *
 	 * @generated
 	 */
-	public Object doRBAC_Transformation(IProgressMonitor monitor) throws ATLCoreException, IOException, ATLExecutionException {
+	public Object doRBACTransformation(IProgressMonitor monitor) throws ATLCoreException, IOException, ATLExecutionException {
 		ILauncher launcher = new EMFVMLauncher();
 		Map<String, Object> launcherOptions = getOptions();
 		launcher.initialize(launcherOptions);
@@ -105,7 +132,7 @@ public class RBACTransformation {
 		launcher.addOutModel(outModel, "OUT", "UML2");
 		return launcher.launch("run", monitor, launcherOptions, (Object[]) getModulesList());
 	}
-	
+
 	/**
 	 * Returns an Array of the module input streams, parameterized by the
 	 * property file.

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -79,24 +80,29 @@ public class FrameDebut extends JFrame {
 		 */
 		
 		final JRadioButton rdbtnRBAC = new JRadioButton("RBAC");
+		rdbtnRBAC.setActionCommand("RBAC");
 		rdbtnRBAC.setBounds(6, 30, 80, 23);
 		panel.add(rdbtnRBAC);
 		
-		final JRadioButton rdbtnSESSION = new JRadioButton("Session");	
+		final JRadioButton rdbtnSESSION = new JRadioButton("Session");
+		rdbtnSESSION.setActionCommand("Session");
 		rdbtnSESSION.setBounds(6, 56, 109, 23);
 		panel.add(rdbtnSESSION);
 		
 		final JRadioButton rdbtnAUTHORIZATION = new JRadioButton("Authorization");
+		rdbtnAUTHORIZATION.setActionCommand("Authorization");
 		rdbtnAUTHORIZATION.setEnabled(false);
 		rdbtnAUTHORIZATION.setBounds(6, 82, 109, 23);
 		panel.add(rdbtnAUTHORIZATION);
 		
 		final JRadioButton rdbtnMULTILEVEL = new JRadioButton("Multilevel");
+		rdbtnMULTILEVEL.setActionCommand("Multilevel");
 		rdbtnMULTILEVEL.setEnabled(false);
 		rdbtnMULTILEVEL.setBounds(6, 108, 109, 23);
 		panel.add(rdbtnMULTILEVEL);
 		
-		final JRadioButton rdbtnREFMONITOR = new JRadioButton("Reference Monitor ");
+		final JRadioButton rdbtnREFMONITOR = new JRadioButton("Reference Monitor");
+		rdbtnREFMONITOR.setActionCommand("Reference Monitor");
 		rdbtnREFMONITOR.setEnabled(false);
 		rdbtnREFMONITOR.setBounds(6, 135, 129, 23);
 		panel.add(rdbtnREFMONITOR);
@@ -105,7 +111,7 @@ public class FrameDebut extends JFrame {
 		 * *Group the radio buttons.
 		 */
 		
-		ButtonGroup group = new ButtonGroup();
+		final ButtonGroup group = new ButtonGroup();
 		group.add(rdbtnRBAC);
 		group.add(rdbtnSESSION);
 		group.add(rdbtnAUTHORIZATION);
@@ -120,16 +126,32 @@ public class FrameDebut extends JFrame {
 		
 		JButton btnNewButton_1 = new JButton("Next >");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			//Action du boutton
 		
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				//new FrameApplicationProfile().show();
 				hide();
+				/*
+				 * *Open the frame responsible for entry stereotypes choice 
+				 */
 				new FramePattronChoisi().show();
+				/*
+				 * /Copy initial transformations in the package
+				 */
+				CopyFile c=new CopyFile();
 				
+				//Begin copy section for RBAC transformation
+			if(group.getSelection().getActionCommand().equals("RBAC")){
+				try {
+					c.copy(System.getProperty("user.dir" )+"/initialTransformations/RBACTransformation.atl",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
+					c.copy(System.getProperty("user.dir" )+"/initialTransformations/RBACTransformation.asm",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.asm");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}}
+			//End Copy section for RBAC transformation
+			
 			}
 		});
+		
 		btnNewButton_1.setBounds(217, 229, 89, 23);
 		contentPane.add(btnNewButton_1);
 		

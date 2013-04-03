@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -19,7 +20,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -154,6 +157,11 @@ public class FramePattronChoisi extends JFrame {
 				
 				new FrameDebut();
 				/*
+				 * restore Transformations
+				 */
+				
+				
+				/*
 				 * *construct the command (applyProfile)to insert into the transformation
 				 */
 				profileApplicationCommande="t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='"+FrameDebut.getProfile()+"') -> first());\n" +
@@ -169,10 +177,10 @@ public class FramePattronChoisi extends JFrame {
 				/*
 				 * * Insert the command into the transformation
 				 */
-				System.out.println(System.getProperty("user.dir" )+"\\..\\testATL\\RBACTransformation.asm");
+				
 				/*create an ReplaceString Object with the transformation path as a parameter.
 				 * The transformation file is located in an ATL Project to ensure updating the asm file associated to the atl file.*/
-				ReplaceString R=new ReplaceString("E:/MyNewJunoWS/testATL/RBACTransformation.atl");
+				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
 				
 				try {
 				/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
@@ -185,30 +193,13 @@ public class FramePattronChoisi extends JFrame {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				
-				System.out.println("insertion terminée");
-				
-				/*create a CopyFile Object.*/
-				CopyFile c=new CopyFile();
-				
-				try {
-				/*Copying the asm file (related to the atl transformation) from the ATL project to the plugin project*/
-					c.copy(System.getProperty("user.dir" )+"/../testATL/RBACTransformation.asm",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.asm");
-					
-				/*Copying the atl file from the ATL project to the plugin project*/
-					c.copy(System.getProperty("user.dir" )+"/../testATL/RBACTransformation.atl",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
-				System.out.println("copie terminée");
-				
-				/*thread whitch sleeps for 4 seconds before executing the transformation to wait for the workspace refreshment*/
 				try {
 					Thread.sleep(4000);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
+				
+				System.out.println("insertion terminée");
 				
 				/*loading necessary resources*/
 				ResourceSet RESOURCE_SET = new ResourceSetImpl();
@@ -221,8 +212,9 @@ public class FramePattronChoisi extends JFrame {
 						), baseUri.appendSegment( "metamodels" ).appendSegment( "" ));
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.PROFILES_PATHMAP ), 
 						baseUri.appendSegment( "profiles" ).appendSegment( "" ));
+							
 					
-				/*running the transformation*/
+				/*running the transformations*/
 				try {					
 				/*create a new runner (object associated to the transformation class) */
 						RBACTransformation runner = new RBACTransformation();
@@ -231,10 +223,12 @@ public class FramePattronChoisi extends JFrame {
 						runner.loadModels("MedicalManagementModel.uml", "RBAC_Profile.profile.uml");
 						
 				/*Apply the transformation*/
-						runner.doRBAC_Transformation(new NullProgressMonitor());
+						runner.doRBACTransformation(new NullProgressMonitor());
 						
 				/*save the generated output model*/
 						runner.saveModels("MedicalManagementModelout.uml");
+						
+						
 					
 				} catch (ATLCoreException e) {
 					e.printStackTrace();
@@ -242,30 +236,21 @@ public class FramePattronChoisi extends JFrame {
 					e.printStackTrace();
 				} catch (ATLExecutionException e) {
 					e.printStackTrace();
-				}
+				} 
 				
-				/*Indicate the end of the transformation*/
-				JOptionPane.showMessageDialog(null,"Transformation terminée");
 				
 				/*
 				 * Delete temporary files (RBACTransformation.atl and RBACTransformation.asm)
 				 */
-//				File ATLFile = new File("E:/MyNewJunoWS/securityPatternPlugin/src/securityPatternPlugin/handlers/RBACTransformation.atl");
-//				File ASMFile = new File("E:/MyNewJunoWS/securityPatternPlugin/src/securityPatternPlugin/handlers/RBACTransformation.asm");
-//				ATLFile.delete();
-//				ASMFile.delete();
-				
-				/*
-				 * restore Transformations
-				 */
-//				try {
-//					c.copy("E:/MyNewJunoWS/testATL/TransformationBrute/RBACTransformation.atl","E:/MyNewJunoWS/testATL/RBACTransformation.atl");
-//					c.copy("E:/MyNewJunoWS/testATL/TransformationBrute/RBACTransformation.asm","E:/MyNewJunoWS/testATL/RBACTransformation.asm");
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
+				File ATLFile = new File(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
+				File ASMFile = new File(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.asm");
+				ASMFile.delete();
+				ATLFile.delete();
 				
 				
+				/*Indicate the end of the transformation*/
+				JOptionPane.showMessageDialog(null,"Transformation terminée");
+							
 				
 			}
 		});

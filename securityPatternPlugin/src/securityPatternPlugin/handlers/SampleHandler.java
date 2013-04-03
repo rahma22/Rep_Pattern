@@ -27,7 +27,6 @@ public class SampleHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 
-//Comment here
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 	new EventDispatcher();
 	EventDispatcher.main(null);
