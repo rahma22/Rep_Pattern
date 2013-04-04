@@ -1,0 +1,296 @@
+-- @nsURI UML2=http://www.eclipse.org/uml2/4.0.0/UML
+-- @path PRO=/testATL/RBACTransformation/Models/RBAC_Profile.profile.uml
+
+module RBACTransformation;
+create OUT : UML2 from IN : UML2, IN1 : PRO;
+
+helper def: getStereotype(p: UML2!Profile, name: String): UML2!Stereotype =
+	p.ownedStereotype -> select(s | s.name = name) -> first();
+helper context UML2!Element def: hasStereotype(stereotype : String) : Boolean =
+	self.getAppliedStereotypes() -> collect(st | st.name) -> includes(stereotype);
+
+
+--helper context UML2!"uml::Element" def: hasStereotype(stereotype: String): Boolean =
+--	self.getAppliedStereotypes() -> exists(c | c.name = stereotype);
+
+helper context UML2!"uml::Element" def: hasProfile(profile: String): Boolean =
+	self.getNearestPackage().getAllAppliedProfiles()-> exists(c | c.name = profile);
+
+helper context UML2!"uml::Element" def:getProfile(name : String) : UML2!"uml::Package" =
+UML2!"uml::Package".allInstances()->select(s | s.name = name).first();
+
+
+
+
+rule Model {
+	from
+		s: UML2!"uml::Model" in IN
+	to
+		t: UML2!"uml::Model" (
+			--__xmiID__ <- s.__xmiID__,
+			name <- s.name.debug('Model'),
+			visibility <- s.visibility,
+			viewpoint <- s.viewpoint,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			--packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			packageMerge <- s.packageMerge,
+			packagedElement <- s.packagedElement,
+			profileApplication <- s.profileApplication
+		)
+}
+rule ProfileApplication {
+    from s : UML2!"uml::ProfileApplication" in IN
+	      to t : UML2!"uml::ProfileApplication" (
+	       -- __xmiID__ <- s.__xmiID__,
+	        isStrict <- s.isStrict,
+	        --eAnnotations <- s.eAnnotations,
+	        ownedComment <- s.ownedComment,
+	        appliedProfile <- s.appliedProfile)
+	}
+
+
+
+
+rule Package {
+	from
+		s: UML2!"uml::Package" in IN (
+			s.oclIsTypeOf(UML2!"uml::Package")
+		)
+	to
+		t: UML2!"uml::Package" (
+			-- __xmiID__ <- s.__xmiID__,
+			name <- s.name.debug('Package'),
+			visibility <- s.visibility,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			packageMerge <- s.packageMerge,
+			packagedElement <- s.packagedElement,
+			profileApplication <- s.profileApplication,
+			importedMember <- s.importedMember,
+			URI <- s.URI,
+			nestedPackage <- s.nestedPackage,
+			nestingPackage <- s.nestingPackage,
+			ownedRule <- s.ownedRule
+		) 
+		---do section to apply MyPro Profile
+do {
+---REPLACE_PROFIL---
+}
+}
+
+rule Class {
+    from s : UML2!"uml::Class" in IN (s.oclIsTypeOf(UML2!"uml::Class"))
+    to t : UML2!"uml::Class" (
+--        __xmiID__ <- s.__xmiID__,
+        name <- s.name,
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isAbstract <- s.isAbstract,
+        isActive <- s.isActive,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        elementImport <- s.elementImport,
+        packageImport <- s.packageImport,
+        ownedRule <- s.ownedRule,
+        templateParameter <- s.templateParameter,
+        templateBinding <- s.templateBinding,
+        ownedTemplateSignature <- s.ownedTemplateSignature,
+        generalization <- s.generalization,
+        powertypeExtent <- s.powertypeExtent,
+        redefinedClassifier <- s.redefinedClassifier,
+        substitution <- s.substitution,
+        representation <- s.representation,
+        collaborationUse <- s.collaborationUse,
+        ownedUseCase <- s.ownedUseCase,
+        useCase <- s.useCase,
+        ownedAttribute <- s.ownedAttribute,
+        ownedConnector <- s.ownedConnector,
+        ownedBehavior <- s.ownedBehavior,
+        classifierBehavior <- s.classifierBehavior,
+        interfaceRealization <- s.interfaceRealization,
+  --      ownedTrigger <- s.ownedTrigger,
+        nestedClassifier <- s.nestedClassifier,
+        ownedOperation <- s.ownedOperation,
+        ownedReception <- s.ownedReception)
+}
+
+rule Interface {
+    from s : UML2!"uml::Interface" in IN
+    to t : UML2!"uml::Interface" (
+    --    __xmiID__ <- s.__xmiID__,
+        name <- s.name,
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isAbstract <- s.isAbstract,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        elementImport <- s.elementImport,
+        packageImport <- s.packageImport,
+        ownedRule <- s.ownedRule,
+        templateParameter <- s.templateParameter,
+        templateBinding <- s.templateBinding,
+        ownedTemplateSignature <- s.ownedTemplateSignature,
+        generalization <- s.generalization,
+        powertypeExtent <- s.powertypeExtent,
+        redefinedClassifier <- s.redefinedClassifier,
+        substitution <- s.substitution,
+        representation <- s.representation,
+        collaborationUse <- s.collaborationUse,
+        ownedUseCase <- s.ownedUseCase,
+        useCase <- s.useCase,
+        ownedAttribute <- s.ownedAttribute,
+        ownedOperation <- s.ownedOperation,
+        nestedClassifier <- s.nestedClassifier,
+        redefinedInterface <- s.redefinedInterface,
+        ownedReception <- s.ownedReception,
+        protocol <- s.protocol)
+}
+rule Realization {
+    from s : UML2!"uml::Realization" in IN (s.oclIsTypeOf(UML2!"uml::Realization"))
+    to t : UML2!"uml::Realization" (
+      --  __xmiID__ <- s.__xmiID__,
+        name <- s.name,
+        visibility <- s.visibility,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        templateParameter <- s.templateParameter,
+        supplier <- s.supplier,
+        client <- s.client,
+        mapping <- s.mapping)
+}
+
+rule Usage {
+    from s : UML2!"uml::Usage" in IN
+    to t : UML2!"uml::Usage" (
+        --__xmiID__ <- s.__xmiID__,
+        name <- s.name,
+        visibility <- s.visibility,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        templateParameter <- s.templateParameter,
+        supplier <- s.supplier,
+        client <- s.client)
+}
+
+rule Component {
+	from
+		s: UML2!"uml::Component" in IN
+	to
+		t: UML2!"uml::Component" (
+			name <- s.name.debug('Component'),
+			visibility <- s.visibility,
+			isLeaf <- s.isLeaf,
+			isAbstract <- s.isAbstract,
+			isActive <- s.isActive,
+			isIndirectlyInstantiated <- s.isIndirectlyInstantiated,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			generalization <- s.generalization,
+			powertypeExtent <- s.powertypeExtent,
+			redefinedClassifier <- s.redefinedClassifier,
+			substitution <- s.substitution,
+			representation <- s.representation,
+			collaborationUse <- s.collaborationUse,
+			ownedUseCase <- s.ownedUseCase,
+			useCase <- s.useCase,
+			ownedAttribute <- s.ownedAttribute,
+			ownedConnector <- s.ownedConnector,
+			ownedBehavior <- s.ownedBehavior,
+			classifierBehavior <- s.classifierBehavior,
+			interfaceRealization <- s.interfaceRealization,
+			nestedClassifier <- s.nestedClassifier,
+			ownedOperation <- s.ownedOperation,
+			ownedReception <- s.ownedReception,
+			packagedElement <- s.packagedElement,
+			realization <- s.realization
+		)
+		---do section to apply stereotypes---
+		do { 
+---REPLACE_STEREO---
+
+}
+}
+
+
+rule Dependency {
+    from s : UML2!"uml::Dependency" in IN (s.oclIsTypeOf(UML2!"uml::Dependency"))
+    to t : UML2!"uml::Dependency" (
+        --__xmiID__ <- s.__xmiID__,
+        name <- s.name,
+        visibility <- s.visibility,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        templateParameter <- s.templateParameter,
+        supplier <- s.supplier,
+        client <- s.client)
+		
+}
+
+rule Port {
+    from s : UML2!"uml::Port" in IN
+    to t : UML2!"uml::Port" (
+        --__xmiID__ <- s.__xmiID__,
+        name <- s.name,
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isStatic <- s.isStatic,
+        isOrdered <- s.isOrdered,
+        isUnique <- s.isUnique,
+        isReadOnly <- s.isReadOnly,
+        isDerived <- s.isDerived,
+        isDerivedUnion <- s.isDerivedUnion,
+        aggregation <- s.aggregation,
+        isBehavior <- s.isBehavior,
+        isService <- s.isService,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        type <- s.type,
+        upperValue <- s.upperValue,
+        lowerValue <- s.lowerValue,
+        templateParameter <- s.templateParameter,
+        deployment <- s.deployment,
+        redefinedProperty <- s.redefinedProperty,
+        defaultValue <- s.defaultValue,
+        subsettedProperty <- s.subsettedProperty,
+        association <- s.association,
+        qualifier <- s.qualifier,
+        redefinedPort <- s.redefinedPort,
+        protocol <- s.protocol)
+
+}

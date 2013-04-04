@@ -3,11 +3,24 @@
 
 module RBACTransformation;
 create OUT : UML2 from IN : UML2, IN1 : PRO;
+
 helper def: getStereotype(p: UML2!Profile, name: String): UML2!Stereotype =
 	p.ownedStereotype -> select(s | s.name = name) -> first();
+helper context UML2!Element def: hasStereotype(stereotype : String) : Boolean =
+	self.getAppliedStereotypes() -> collect(st | st.name) -> includes(stereotype);
 
-helper context UML2!"uml::Element" def: hasStereotype(stereotype: String): Boolean =
-	self.getAppliedStereotypes() -> exists(c | c.name = stereotype);
+
+--helper context UML2!"uml::Element" def: hasStereotype(stereotype: String): Boolean =
+--	self.getAppliedStereotypes() -> exists(c | c.name = stereotype);
+
+helper context UML2!"uml::Element" def: hasProfile(profile: String): Boolean =
+	self.getNearestPackage().getAllAppliedProfiles()-> exists(c | c.name = profile);
+
+helper context UML2!"uml::Element" def:getProfile(name : String) : UML2!"uml::Package" =
+UML2!"uml::Package".allInstances()->select(s | s.name = name).first();
+
+
+
 
 rule Model {
 	from
@@ -43,6 +56,9 @@ rule ProfileApplication {
 	        appliedProfile <- s.appliedProfile)
 	}
 
+
+
+
 rule Package {
 	from
 		s: UML2!"uml::Package" in IN (
@@ -74,7 +90,6 @@ rule Package {
 		) 
 		---do section to apply MyPro Profile
 do {
-	
 t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='RBAC_Profile') -> first());
 thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = 'RBAC_Profile') -> first();
 }
@@ -223,14 +238,11 @@ rule Component {
 			realization <- s.realization
 		)
 		---do section to apply stereotypes---
-		do {
-			
-
+		do { 
 if(s.name = 'Doctors')
 {t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC_User'));}
 if(s.name = 'ManagementSystem')
 {t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC_ProtectionObject'));}
-
 
 
 }
@@ -250,11 +262,7 @@ rule Dependency {
         templateParameter <- s.templateParameter,
         supplier <- s.supplier,
         client <- s.client)
-		do {
-	--if((s.source='IDoctors') and (s.supplier='IManagementSystem'))
---{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC_Right'));}
-	
-}
+		
 }
 
 rule Port {
@@ -289,8 +297,5 @@ rule Port {
         qualifier <- s.qualifier,
         redefinedPort <- s.redefinedPort,
         protocol <- s.protocol)
+
 }
-
-
-
-

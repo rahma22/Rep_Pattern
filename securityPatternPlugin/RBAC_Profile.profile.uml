@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_r8k8kJf8EeK7sK7etxQSYg" name="profile">
+  <eAnnotations xmi:id="_kmcnEJf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_kmd1MJf9EeK7sK7etxQSYg" name="profile" nsURI="http:///schemas/profile/_kmN9kJf9EeK7sK7etxQSYg/0" nsPrefix="profile">
+      <eAnnotations xmi:id="_kmd1MZf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/4.0.0/UML" references="_vXjOoJf8EeK7sK7etxQSYg"/>
+      <eAnnotations xmi:id="_kmoNQJf9EeK7sK7etxQSYg" source="PapyrusVersion">
+        <details xmi:id="_kmo0UJf9EeK7sK7etxQSYg" key="Version" value="0.0.1"/>
+        <details xmi:id="_kmo0UZf9EeK7sK7etxQSYg" key="Comment" value=""/>
+        <details xmi:id="_kmo0Upf9EeK7sK7etxQSYg" key="Copyright" value=""/>
+        <details xmi:id="_kmo0U5f9EeK7sK7etxQSYg" key="Date" value="2013-03-29"/>
+        <details xmi:id="_kmo0VJf9EeK7sK7etxQSYg" key="Author" value=""/>
+      </eAnnotations>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Profile" xmi:id="_vXjOoJf8EeK7sK7etxQSYg" name="RBAC_Profile" metaclassReference="_4PgGwJf8EeK7sK7etxQSYg _4PhU4Jf8EeK7sK7etxQSYg _4Ph78Jf8EeK7sK7etxQSYg">
+    <eAnnotations xmi:id="_kmlJ8Jf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_kmlxAJf9EeK7sK7etxQSYg" name="RBAC_Profile" nsURI="http://profile/schemas/RBAC_Profile/_kmjUwJf9EeK7sK7etxQSYg/0" nsPrefix="RBAC_Profile">
+        <eAnnotations xmi:id="_kmtFwJf9EeK7sK7etxQSYg" source="PapyrusVersion">
+          <details xmi:id="_kmtFwZf9EeK7sK7etxQSYg" key="Version" value="0.0.1"/>
+          <details xmi:id="_kmtFwpf9EeK7sK7etxQSYg" key="Comment" value=""/>
+          <details xmi:id="_kmtFw5f9EeK7sK7etxQSYg" key="Copyright" value=""/>
+          <details xmi:id="_kmtFxJf9EeK7sK7etxQSYg" key="Date" value="2013-03-29"/>
+          <details xmi:id="_kmtFxZf9EeK7sK7etxQSYg" key="Author" value=""/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_kmlxAZf9EeK7sK7etxQSYg" name="RBAC_User">
+          <eAnnotations xmi:id="_kmlxApf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_-vDkIJf8EeK7sK7etxQSYg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_kmlxA5f9EeK7sK7etxQSYg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_kmlxBZf9EeK7sK7etxQSYg" name="RBAC_ProtectionObject">
+          <eAnnotations xmi:id="_kmlxBpf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_EByCAJf9EeK7sK7etxQSYg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_kmlxB5f9EeK7sK7etxQSYg" name="base_Component" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Component"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_kmlxCZf9EeK7sK7etxQSYg" name="RBAC_Role">
+          <eAnnotations xmi:id="_kmlxCpf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_EzvDYJf9EeK7sK7etxQSYg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_kmlxC5f9EeK7sK7etxQSYg" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_kmlxDZf9EeK7sK7etxQSYg" name="RBAC_Right">
+          <eAnnotations xmi:id="_kmlxDpf9EeK7sK7etxQSYg" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_FhbP0Jf9EeK7sK7etxQSYg"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_kmlxD5f9EeK7sK7etxQSYg" name="base_Dependency" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Dependency"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_4PgGwJf8EeK7sK7etxQSYg" alias="Component">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+    </elementImport>
+    <elementImport xmi:id="_4PhU4Jf8EeK7sK7etxQSYg" alias="Dependency">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+    </elementImport>
+    <elementImport xmi:id="_4Ph78Jf8EeK7sK7etxQSYg" alias="Port">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_-vDkIJf8EeK7sK7etxQSYg" name="RBAC_User">
+      <ownedAttribute xmi:id="_HFnmcJf9EeK7sK7etxQSYg" name="base_Component" association="_HFoNgJf9EeK7sK7etxQSYg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_EByCAJf9EeK7sK7etxQSYg" name="RBAC_ProtectionObject">
+      <ownedAttribute xmi:id="_HpJxUJf9EeK7sK7etxQSYg" name="base_Component" association="_HpKYYJf9EeK7sK7etxQSYg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Component"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_EzvDYJf9EeK7sK7etxQSYg" name="RBAC_Role">
+      <ownedAttribute xmi:id="_IJZXoJf9EeK7sK7etxQSYg" name="base_Port" association="_IJZ-sJf9EeK7sK7etxQSYg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_FhbP0Jf9EeK7sK7etxQSYg" name="RBAC_Right">
+      <ownedAttribute xmi:id="_IqVhgJf9EeK7sK7etxQSYg" name="base_Dependency" association="_IqWIkJf9EeK7sK7etxQSYg">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Dependency"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HFoNgJf9EeK7sK7etxQSYg" name="E_RBAC_User_Component1" memberEnd="_HFoNgZf9EeK7sK7etxQSYg _HFnmcJf9EeK7sK7etxQSYg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HFoNgZf9EeK7sK7etxQSYg" name="extension_RBAC_User" type="_-vDkIJf8EeK7sK7etxQSYg" aggregation="composite" association="_HFoNgJf9EeK7sK7etxQSYg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_HpKYYJf9EeK7sK7etxQSYg" name="E_RBAC_ProtectionObject_Component1" memberEnd="_HpKYYZf9EeK7sK7etxQSYg _HpJxUJf9EeK7sK7etxQSYg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_HpKYYZf9EeK7sK7etxQSYg" name="extension_RBAC_ProtectionObject" type="_EByCAJf9EeK7sK7etxQSYg" aggregation="composite" association="_HpKYYJf9EeK7sK7etxQSYg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_IJZ-sJf9EeK7sK7etxQSYg" name="E_RBAC_Role_Port1" memberEnd="_IJZ-sZf9EeK7sK7etxQSYg _IJZXoJf9EeK7sK7etxQSYg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IJZ-sZf9EeK7sK7etxQSYg" name="extension_RBAC_Role" type="_EzvDYJf9EeK7sK7etxQSYg" aggregation="composite" association="_IJZ-sJf9EeK7sK7etxQSYg"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_IqWIkJf9EeK7sK7etxQSYg" name="E_RBAC_Right_Dependency1" memberEnd="_IqWIkZf9EeK7sK7etxQSYg _IqVhgJf9EeK7sK7etxQSYg">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_IqWIkZf9EeK7sK7etxQSYg" name="extension_RBAC_Right" type="_FhbP0Jf9EeK7sK7etxQSYg" aggregation="composite" association="_IqWIkJf9EeK7sK7etxQSYg"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Profile>

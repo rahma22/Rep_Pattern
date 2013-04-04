@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_0O8_QJf4EeKGQtKrrNEsFg" name="MedicalManagementModel">
+  <packageImport xmi:id="_0O8_QZf4EeKGQtKrrNEsFg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_AAIuUJf5EeKGQtKrrNEsFg" name="IDoctors"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_AjyN8Jf5EeKGQtKrrNEsFg" name="IPatients"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_AybG4Jf5EeKGQtKrrNEsFg" name="IEmployees"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_BAAP4Jf5EeKGQtKrrNEsFg" name="IManagementSystem" clientDependency="_v0Xi8Jf7EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FtJ7gJf5EeKGQtKrrNEsFg" name="PDoctors" clientDependency="_hGg5UJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GA4IwJf5EeKGQtKrrNEsFg" name="RDoctors" clientDependency="_jrxrYJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GUtDsJf5EeKGQtKrrNEsFg" name="PPatients" clientDependency="_hXYm4Jf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Gmq9cJf5EeKGQtKrrNEsFg" name="RPatients" clientDependency="_jYp7EJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_G28OEJf5EeKGQtKrrNEsFg" name="PEmployees" clientDependency="_hrWEsJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_HCZQIJf5EeKGQtKrrNEsFg" name="REmployees" clientDependency="_jF4wEJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MXRqIJf5EeKGQtKrrNEsFg" name="PManagementSystem" clientDependency="_h_iMAJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_M_xNgJf5EeKGQtKrrNEsFg" name="RManagementSystem" clientDependency="_iy_pQJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_hGg5UJf5EeKGQtKrrNEsFg" name="FromPDoctorstoIDoctors" supplier="_AAIuUJf5EeKGQtKrrNEsFg" client="_FtJ7gJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_hXYm4Jf5EeKGQtKrrNEsFg" name="FromPPatientstoIPatients" supplier="_AjyN8Jf5EeKGQtKrrNEsFg" client="_GUtDsJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_hrWEsJf5EeKGQtKrrNEsFg" name="FromPEmployeestoIEmployees" supplier="_AybG4Jf5EeKGQtKrrNEsFg" client="_G28OEJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_h_iMAJf5EeKGQtKrrNEsFg" name="FromPManagementSystemtoIManagementSystem" supplier="_BAAP4Jf5EeKGQtKrrNEsFg" client="_MXRqIJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_iy_pQJf5EeKGQtKrrNEsFg" name="FromRManagementSystemtoIManagementSystem" supplier="_BAAP4Jf5EeKGQtKrrNEsFg" client="_M_xNgJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_jF4wEJf5EeKGQtKrrNEsFg" name="FromREmployeestoIEmployees" supplier="_AybG4Jf5EeKGQtKrrNEsFg" client="_HCZQIJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_jYp7EJf5EeKGQtKrrNEsFg" name="FromRPatientstoIPatients" supplier="_AjyN8Jf5EeKGQtKrrNEsFg" client="_Gmq9cJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_jrxrYJf5EeKGQtKrrNEsFg" name="FromRDoctorstoIDoctors" supplier="_AAIuUJf5EeKGQtKrrNEsFg" client="_GA4IwJf5EeKGQtKrrNEsFg"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_mWAdAJf5EeKGQtKrrNEsFg" name="ManagementSystemPackage">
+    <packagedElement xmi:type="uml:Component" xmi:id="_ktp_IJf5EeKGQtKrrNEsFg" name="Doctors">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_xXdYQJf5EeKGQtKrrNEsFg" name="DoctorsPort" clientDependency="_1q8UwJf7EeKGQtKrrNEsFg" type="_GA4IwJf5EeKGQtKrrNEsFg" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_UEUA0Jw3EeK1uY30gvjT-Q" name="Port_0" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_lBHtsJf5EeKGQtKrrNEsFg" name="Patients">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_yuHCIJf5EeKGQtKrrNEsFg" name="PatientsPort" type="_GUtDsJf5EeKGQtKrrNEsFg" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_siM5gJf5EeKGQtKrrNEsFg" name="Employees">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_zfkUQJf5EeKGQtKrrNEsFg" name="EmployeesPort" type="_G28OEJf5EeKGQtKrrNEsFg" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_uBrvQJf5EeKGQtKrrNEsFg" name="ManagementSystem">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_0KL-kJf5EeKGQtKrrNEsFg" name="ManagementsystemPort3" clientDependency="_uFEvkJf7EeKGQtKrrNEsFg" type="_M_xNgJf5EeKGQtKrrNEsFg" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_0plQUJf5EeKGQtKrrNEsFg" name="ManagementSystemPort2" clientDependency="_vDgGsJf7EeKGQtKrrNEsFg" type="_M_xNgJf5EeKGQtKrrNEsFg" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_1hSUYJf5EeKGQtKrrNEsFg" name="ManagementSystemPort1" type="_MXRqIJf5EeKGQtKrrNEsFg" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_uFEvkJf7EeKGQtKrrNEsFg" name="FromManagementsystemPort3toEmployeesPort" supplier="_zfkUQJf5EeKGQtKrrNEsFg" client="_0KL-kJf5EeKGQtKrrNEsFg"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_vDgGsJf7EeKGQtKrrNEsFg" name="FromManagementSystemPort2toPatientsPort" supplier="_yuHCIJf5EeKGQtKrrNEsFg" client="_0plQUJf5EeKGQtKrrNEsFg"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_v0Xi8Jf7EeKGQtKrrNEsFg" name="FromIManagementSystemtoIDoctors" supplier="_AAIuUJf5EeKGQtKrrNEsFg" client="_BAAP4Jf5EeKGQtKrrNEsFg"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_1q8UwJf7EeKGQtKrrNEsFg" name="FromDoctorsPorttoManagementSystemPort1" supplier="_1hSUYJf5EeKGQtKrrNEsFg" client="_xXdYQJf5EeKGQtKrrNEsFg"/>
+  </packagedElement>
+  <profileApplication xmi:id="_0O8_Qpf4EeKGQtKrrNEsFg">
+    <eAnnotations xmi:id="_0O8_Q5f4EeKGQtKrrNEsFg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/schemas/Standard/1#/"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>
