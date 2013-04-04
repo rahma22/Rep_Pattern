@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -17,12 +16,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -31,8 +29,6 @@ import org.eclipse.m2m.atl.common.ATLExecutionException;
 import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
-
-import securityPatternPlugin.handlers.FrameDebut;
 
 public class FramePattronChoisi extends JFrame {
 
@@ -66,8 +62,7 @@ public class FramePattronChoisi extends JFrame {
 	 */
 	public FramePattronChoisi() {
 		/*frame parameters*/
-		setTitle("Pattern Application");//frame title
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//exit the program when closing the frame
+		setTitle("Pattern Application");
 		setBounds(100, 100, 495, 326); //frame bounds
 		getContentPane().setLayout(null);// frame layout
 		
@@ -88,6 +83,8 @@ public class FramePattronChoisi extends JFrame {
 		
 		/*setting the parameters of the table   */
 		table = new JTable();
+		table.setSurrendersFocusOnKeystroke(true);
+		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		scrollPane.setViewportView(table);
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setModel(new DefaultTableModel(
@@ -180,8 +177,8 @@ public class FramePattronChoisi extends JFrame {
 				
 				/*create an ReplaceString Object with the transformation path as a parameter.
 				 * The transformation file is located in an ATL Project to ensure updating the asm file associated to the atl file.*/
-				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
-				
+//				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
+				ReplaceString R=new ReplaceString("./src/securityPatternPlugin/handlers/RBACTransformation.atl");
 				try {
 				/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
 					R.MethodeRemplacer("---REPLACE_PROFIL---", profileApplicationCommande);
@@ -194,13 +191,13 @@ public class FramePattronChoisi extends JFrame {
 					e.printStackTrace();
 				}
 				try {
-					Thread.sleep(4000);
+					Thread.sleep(5000);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
 				
 				System.out.println("insertion terminée");
-				
+
 				/*loading necessary resources*/
 				ResourceSet RESOURCE_SET = new ResourceSetImpl();
 				UMLResourcesUtil.init(RESOURCE_SET);
@@ -211,10 +208,12 @@ public class FramePattronChoisi extends JFrame {
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.METAMODELS_PATHMAP 
 						), baseUri.appendSegment( "metamodels" ).appendSegment( "" ));
 						URIConverter.URI_MAP.put(URI.createURI( UMLResource.PROFILES_PATHMAP ), 
-						baseUri.appendSegment( "profiles" ).appendSegment( "" ));
+						baseUri.appendSegment( "profiles" ).appendSegment( "" ));	
+				
 							
 					
 				/*running the transformations*/
+						//Begin RBAC_Transformation
 				try {					
 				/*create a new runner (object associated to the transformation class) */
 						RBACTransformation runner = new RBACTransformation();
@@ -228,6 +227,34 @@ public class FramePattronChoisi extends JFrame {
 				/*save the generated output model*/
 						runner.saveModels("MedicalManagementModelout.uml");
 						
+				//Second Transformation		
+				
+				/*create a new runner (object associated to the transformation class) */
+						RBACTransformation2 runner2 = new RBACTransformation2();
+						
+				/*load the inputs required in the transformation (the model & the profile) */
+						runner2.loadModels("MedicalManagementModelout.uml", "RBAC_Profile.profile.uml");
+						
+				/*Apply the transformation*/
+						runner2.doRBACTransformation2(new NullProgressMonitor());
+						
+				/*save the generated output model*/
+						runner2.saveModels("MedicalManagementModelout.uml");	
+				
+						//Third Transformation		
+						
+						/*create a new runner (object associated to the transformation class) */
+								RBACTransformation3 runner3 = new RBACTransformation3();
+								
+						/*load the inputs required in the transformation (the model & the profile) */
+								runner3.loadModels("MedicalManagementModelout.uml", "RBAC_Profile.profile.uml");
+								
+						/*Apply the transformation*/
+								runner3.doRBACTransformation3(new NullProgressMonitor());
+								
+						/*save the generated output model*/
+								runner3.saveModels("MedicalManagementModelout.uml");			
+						
 						
 					
 				} catch (ATLCoreException e) {
@@ -236,16 +263,17 @@ public class FramePattronChoisi extends JFrame {
 					e.printStackTrace();
 				} catch (ATLExecutionException e) {
 					e.printStackTrace();
-				} 
-				
+				}  
+					//End RBAC_Transformation
 				
 				/*
 				 * Delete temporary files (RBACTransformation.atl and RBACTransformation.asm)
 				 */
-				File ATLFile = new File(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
-				File ASMFile = new File(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.asm");
-				ASMFile.delete();
-				ATLFile.delete();
+
+//				File ATLFile = new File("./src/securityPatternPlugin/handlers/RBACTransformation.atl");
+//				ATLFile.delete();
+//				File ASMFile = new File("./src/securityPatternPlugin/handlers/RBACTransformation.asm");
+//				ASMFile.delete();
 				
 				
 				/*Indicate the end of the transformation*/

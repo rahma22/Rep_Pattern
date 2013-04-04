@@ -1,8 +1,5 @@
 package securityPatternPlugin.handlers;
 
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;

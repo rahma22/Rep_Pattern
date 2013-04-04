@@ -2,7 +2,6 @@ package securityPatternPlugin.handlers;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -13,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 
 public class FrameDebut extends JFrame {
 
@@ -62,7 +61,6 @@ public class FrameDebut extends JFrame {
 	 */
 	public FrameDebut() {
 		setTitle("Security patterns");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 332, 297);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -141,9 +139,13 @@ public class FrameDebut extends JFrame {
 				
 				//Begin copy section for RBAC transformation
 			if(group.getSelection().getActionCommand().equals("RBAC")){
+			//	URL fileUrl = Platform.getBundle("securityPatternPlugin").getEntry("/");
+			//	ResourcesPlugin.getWorkspace();
+				System.out.println(System.getProperty("user.dir"));
+				
 				try {
-					c.copy(System.getProperty("user.dir" )+"/initialTransformations/RBACTransformation.atl",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
-					c.copy(System.getProperty("user.dir" )+"/initialTransformations/RBACTransformation.asm",System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.asm");
+					c.copy("./initialTransformations/RBACTransformation.atl","./src/securityPatternPlugin/handlers/RBACTransformation.atl");
+					c.copy("./initialTransformations/RBACTransformation.asm","./src/securityPatternPlugin/handlers/RBACTransformation.asm");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}}
@@ -195,7 +197,7 @@ public class FrameDebut extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				rdbtnAUTHORIZATION.setEnabled(false);
 				rdbtnREFMONITOR.setEnabled(true);
-				//Changement des labels
+				//labels Modification
 			}
 		});
 		
