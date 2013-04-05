@@ -217,9 +217,9 @@ public class FramePattronChoisi extends JFrame {
 				try {					
 				/*create a new runner (object associated to the transformation class) */
 						RBACTransformation runner = new RBACTransformation();
-						
+						System.out.println(FrameDebut.getModelinPath());
 				/*load the inputs required in the transformation (the model & the profile) */
-						runner.loadModels("MedicalManagementModel.uml", "RBAC_Profile.profile.uml");
+						runner.loadModels(FrameDebut.getModelinPath(), "RBAC_Profile.profile.uml");
 						
 				/*Apply the transformation*/
 						runner.doRBACTransformation(new NullProgressMonitor());

@@ -4,17 +4,21 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class FrameDebut extends JFrame {
 
@@ -24,12 +28,23 @@ public class FrameDebut extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static String profile;
+	private JTextField textField;
+	private static String modelinPath;
+	
 	public static String getProfile() {
 		return profile;
 	}
 
 	public static void setProfile(String profile) {
 		FrameDebut.profile = profile;
+	}
+	
+	public static String getModelinPath() {
+		return modelinPath;
+	}
+
+	public static void setModelinPath(String modelinPath) {
+		FrameDebut.modelinPath = modelinPath;
 	}
 	
 //	public static String getProfile() {
@@ -61,7 +76,7 @@ public class FrameDebut extends JFrame {
 	 */
 	public FrameDebut() {
 		setTitle("Security patterns");
-		setBounds(100, 100, 332, 297);
+		setBounds(100, 100, 372, 348);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		setContentPane(contentPane);
@@ -69,7 +84,7 @@ public class FrameDebut extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Security patterns", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(54, 46, 215, 172);
+		panel.setBounds(10, 99, 336, 172);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -119,7 +134,7 @@ public class FrameDebut extends JFrame {
 		
 		
 		JLabel lblPatronsDeSecurit = new JLabel("Applicable security patterns for the component diagram: ");
-		lblPatronsDeSecurit.setBounds(10, 11, 293, 14);
+		lblPatronsDeSecurit.setBounds(10, 74, 293, 14);
 		contentPane.add(lblPatronsDeSecurit);
 		
 		JButton btnNewButton_1 = new JButton("Next >");
@@ -154,13 +169,27 @@ public class FrameDebut extends JFrame {
 			}
 		});
 		
-		btnNewButton_1.setBounds(217, 229, 89, 23);
+		btnNewButton_1.setBounds(257, 280, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Details");
 		
-		btnNewButton.setBounds(120, 229, 89, 23);
+		btnNewButton.setBounds(160, 280, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblChooseYourComponent = new JLabel("Choose your Component Model :");
+		lblChooseYourComponent.setBounds(10, 11, 336, 14);
+		contentPane.add(lblChooseYourComponent);
+		
+		textField = new JTextField();
+		textField.setEnabled(false);
+		textField.setBounds(10, 36, 221, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton_2 = new JButton("Open");
+		btnNewButton_2.setBounds(257, 35, 89, 23);
+		contentPane.add(btnNewButton_2);
 /*
  * * ActionPerformed Methods
  */
@@ -208,6 +237,20 @@ public class FrameDebut extends JFrame {
 			}
 		});
 		
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser filechooser = new JFileChooser(new File("."));
+				FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				        "UML Models", "uml");
+				filechooser.setFileFilter(filter);
+				if (filechooser.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
+					modelinPath=filechooser.getSelectedFile().getName();
+					textField.setText(filechooser.getSelectedFile().getName());
+					}		
+			}
+		});
 		
 	}
+
+	
 }
