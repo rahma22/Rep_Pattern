@@ -47,14 +47,6 @@ public class FrameDebut extends JFrame {
 		FrameDebut.modelinPath = modelinPath;
 	}
 	
-//	public static String getProfile() {
-//		return profile;
-//	}
-//
-//	public static void setProfile(String profile) {
-//		FrameDebut.profile = profile;
-//	}
-
 	/**
 	 * Launch the application.
 	 */
@@ -159,8 +151,8 @@ public class FrameDebut extends JFrame {
 				System.out.println(System.getProperty("user.dir"));
 				
 				try {
-					c.copy("./initialTransformations/RBACTransformation.atl","./src/securityPatternPlugin/handlers/RBACTransformation.atl");
-					c.copy("./initialTransformations/RBACTransformation.asm","./src/securityPatternPlugin/handlers/RBACTransformation.asm");
+					c.copy("./transformations/initialTransformations/RBACTransformation.atl","./src/securityPatternPlugin/handlers/RBACTransformation.atl");
+					c.copy("./transformations/initialTransformations/RBACTransformation.asm","./src/securityPatternPlugin/handlers/RBACTransformation.asm");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}}

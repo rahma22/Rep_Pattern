@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -29,11 +30,12 @@ import org.eclipse.m2m.atl.common.ATLExecutionException;
 import org.eclipse.m2m.atl.core.ATLCoreException;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
+import org.xml.sax.SAXException;
 
 public class FramePattronChoisi extends JFrame {
 
 	/**
-	 * 
+	 * Attributes
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable table;
@@ -71,7 +73,7 @@ public class FramePattronChoisi extends JFrame {
 		lblVeuillezChoisirLes.setBounds(10, 11, 459, 14);
 		getContentPane().add(lblVeuillezChoisirLes);
 		
-		/*setting the parameters of the "Ajouter stéréotype" button */
+		/*setting the parameters of the "Add Stereotype" button */
 		JButton btnAjouterComposant = new JButton("Add stereotype");
 		btnAjouterComposant.setIcon(new ImageIcon("icons/ajout.png"));
 		btnAjouterComposant.setBounds(161, 158, 147, 23);
@@ -111,32 +113,53 @@ public class FramePattronChoisi extends JFrame {
 		btnNewButton.setBounds(194, 254, 133, 23);
 		getContentPane().add(btnNewButton);
 //		TableColumn CompColumn = table.getColumnModel().getColumn(0);
-		TableColumn CompColumn = table.getColumnModel().getColumn(0);
-		JComboBox comboComp = new JComboBox();
-		comboComp.addItem("Doctors");
-		comboComp.addItem("Patients");
-		comboComp.addItem("Employees");
-		comboComp.addItem("ManagementSystem");
-		CompColumn.setCellEditor(new DefaultCellEditor(comboComp));
+		TableColumn CompColumn = table.getColumnModel().getColumn(0);//get column of components
+		JComboBox comboComp = new JComboBox();// creating comboBox for components
+/*
+ * Fill ComboBox by Components Of the IN Model
+ */
+		ParserUtilities P=new ParserUtilities();
+		try {
+			for(int i=0;i<P.getComponent(FrameDebut.getModelinPath()).size();i++)
+			comboComp.addItem(P.getComponent(FrameDebut.getModelinPath()).get(i));
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+/*
+ * End Filling ComboBox	
+ */
+		CompColumn.setCellEditor(new DefaultCellEditor(comboComp));//Affect the ComboBox comboComp to the first column "CompColumn" of the table
+
 //		TableColumn SterColumn = table.getColumnModel().getColumn(1);
-		TableColumn SterColumn = table.getColumnModel().getColumn(1);
-		JComboBox comboSter = new JComboBox();
+		TableColumn SterColumn = table.getColumnModel().getColumn(1);//get column of stereotypes
+		JComboBox comboSter = new JComboBox();// creating comboBox for stereotypes
+/*
+ * Fill ComboBox by Stereotypes
+ */
 		comboSter.addItem("RBAC_User");
 		comboSter.addItem("RBAC_ProtectionObject");
-		SterColumn.setCellEditor(new DefaultCellEditor(comboSter));
+/*
+ * End Filling ComboBox	
+ */
+		SterColumn.setCellEditor(new DefaultCellEditor(comboSter));//Affect the ComboBox comboSter to the second column "SterColumn" of the table
 		
-		/*
-		 * *actionPerformed of "Ajouter Stéréotype" button
-		 */
+/*
+ * *actionPerformed of "Add Stereotype" button
+ */
 		btnAjouterComposant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Not yet implemented
 			}
 		});
 		
-		/*
-		 * * actionPerformed of "< Back" button
-		 */
+/*
+ * * actionPerformed of "< Back" button
+ */
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
@@ -145,118 +168,109 @@ public class FramePattronChoisi extends JFrame {
 			}
 		});
 		
-		/*
-		 * *actionPerformed of "Appliquer Patron" button
-		 */
+/*
+ * *actionPerformed of "Appliquer Patron" button
+ */
 		btnAppliquerPatron.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
-				
-				new FrameDebut();
-				/*
-				 * restore Transformations
-				 */
-				
-				
-				/*
-				 * *construct the command (applyProfile)to insert into the transformation
-				 */
-				profileApplicationCommande="t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='"+FrameDebut.getProfile()+"') -> first());\n" +
-						"thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = '"+FrameDebut.getProfile()+"') -> first();";
-				/*
-				 * *construct the command (applyStereotype)to insert into the transformation
-				 */
-				for(int i=0;i<nombreStereotype;i++){
-						stereotypeApplicationCommande=stereotypeApplicationCommande+"if(s.name = '"+table.getValueAt(i, 0)+"')\n" +
-						"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'"+table.getValueAt(i, 1)+"'));}\n";
-					}
-				
-				/*
-				 * * Insert the command into the transformation
-				 */
-				
-				/*create an ReplaceString Object with the transformation path as a parameter.
-				 * The transformation file is located in an ATL Project to ensure updating the asm file associated to the atl file.*/
-//				ReplaceString R=new ReplaceString(System.getProperty("user.dir" )+"/src/securityPatternPlugin/handlers/RBACTransformation.atl");
-				ReplaceString R=new ReplaceString("./src/securityPatternPlugin/handlers/RBACTransformation.atl");
-				try {
-				/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
-					R.MethodeRemplacer("---REPLACE_PROFIL---", profileApplicationCommande);
-				
-				/*Replace the String "---REMPLACER_STEREO---" by the String stereotypeApplicationCommande (stereotypeApplicationCommande is the ATL command which apply stereotypes to the input model) */	
-					R.MethodeRemplacer("---REPLACE_STEREO---",stereotypeApplicationCommande);
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
+/*
+ * *construct the command (applyProfile)to insert into the transformation
+ */
+		profileApplicationCommande="t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='"+FrameDebut.getProfile()+"') -> first());\n" +
+				"thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = '"+FrameDebut.getProfile()+"') -> first();";
+/*
+ * *construct the command (applyStereotype)to insert into the transformation
+ */
+			for(int i=0;i<nombreStereotype;i++){
+					stereotypeApplicationCommande=stereotypeApplicationCommande+"if(s.name = '"+table.getValueAt(i, 0)+"')\n" +
+					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'"+table.getValueAt(i, 1)+"'));}\n";
 				}
 				
-				System.out.println("insertion terminée");
+/*
+ * * Insert the command into the transformation
+ */
+				
+/*create an ReplaceString Object with the transformation path as a parameter.
+ * * The transformation file is located in an ATL Project to ensure updating the asm file associated to the atl file.
+ */
+		ReplaceString R=new ReplaceString("./src/securityPatternPlugin/handlers/RBACTransformation.atl");
+		try {
+		/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
+		R.MethodeRemplacer("---REPLACE_PROFIL---", profileApplicationCommande);
+				
+		/*Replace the String "---REMPLACER_STEREO---" by the String stereotypeApplicationCommande (stereotypeApplicationCommande is the ATL command which apply stereotypes to the input model) */	
+		R.MethodeRemplacer("---REPLACE_STEREO---",stereotypeApplicationCommande);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try {
+				Thread.sleep(5000);
+		} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+				
+			System.out.println("insertion terminée");
 
-				/*loading necessary resources*/
-				ResourceSet RESOURCE_SET = new ResourceSetImpl();
-				UMLResourcesUtil.init(RESOURCE_SET);
-				URI baseUri = 
-						URI.createURI("jar:file:lib/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar!/");
-						URIConverter.URI_MAP.put(URI.createURI( UMLResource.LIBRARIES_PATHMAP ), 
-						baseUri.appendSegment( "libraries" ).appendSegment( "" ));
-						URIConverter.URI_MAP.put(URI.createURI( UMLResource.METAMODELS_PATHMAP 
-						), baseUri.appendSegment( "metamodels" ).appendSegment( "" ));
-						URIConverter.URI_MAP.put(URI.createURI( UMLResource.PROFILES_PATHMAP ), 
-						baseUri.appendSegment( "profiles" ).appendSegment( "" ));	
+		/*loading necessary resources*/
+			ResourceSet RESOURCE_SET = new ResourceSetImpl();
+			UMLResourcesUtil.init(RESOURCE_SET);
+			URI baseUri = 
+					URI.createURI("jar:file:lib/org.eclipse.uml2.uml.resources_4.0.2.v20130114-0902.jar!/");
+					URIConverter.URI_MAP.put(URI.createURI( UMLResource.LIBRARIES_PATHMAP ), 
+					baseUri.appendSegment( "libraries" ).appendSegment( "" ));
+					URIConverter.URI_MAP.put(URI.createURI( UMLResource.METAMODELS_PATHMAP 
+					), baseUri.appendSegment( "metamodels" ).appendSegment( "" ));
+					URIConverter.URI_MAP.put(URI.createURI( UMLResource.PROFILES_PATHMAP ), 
+					baseUri.appendSegment( "profiles" ).appendSegment( "" ));	
 				
 							
 					
-				/*running the transformations*/
-						//Begin RBAC_Transformation
-				try {					
-				/*create a new runner (object associated to the transformation class) */
-						RBACTransformation runner = new RBACTransformation();
-						System.out.println(FrameDebut.getModelinPath());
-				/*load the inputs required in the transformation (the model & the profile) */
-						runner.loadModels(FrameDebut.getModelinPath(), "RBAC_Profile.profile.uml");
-						
-				/*Apply the transformation*/
-						runner.doRBACTransformation(new NullProgressMonitor());
-						
-				/*save the generated output model*/
-						runner.saveModels("MedicalManagementModelout.uml");
-						
-				//Second Transformation		
-				
-				/*create a new runner (object associated to the transformation class) */
-						RBACTransformation2 runner2 = new RBACTransformation2();
-						
-				/*load the inputs required in the transformation (the model & the profile) */
-						runner2.loadModels("MedicalManagementModelout.uml", "RBAC_Profile.profile.uml");
-						
-				/*Apply the transformation*/
-						runner2.doRBACTransformation2(new NullProgressMonitor());
-						
-				/*save the generated output model*/
-						runner2.saveModels("MedicalManagementModelout.uml");	
-				
-						//Third Transformation		
-						
-						/*create a new runner (object associated to the transformation class) */
-								RBACTransformation3 runner3 = new RBACTransformation3();
-								
-						/*load the inputs required in the transformation (the model & the profile) */
-								runner3.loadModels("MedicalManagementModelout.uml", "RBAC_Profile.profile.uml");
-								
-						/*Apply the transformation*/
-								runner3.doRBACTransformation3(new NullProgressMonitor());
-								
-						/*save the generated output model*/
-								runner3.saveModels("MedicalManagementModelout.uml");			
-						
-						
+		/*running the transformations*/
+				//Begin RBAC_Transformation
+			try {					
+		/*create a new runner (object associated to the transformation class) */
+				RBACTransformation runner = new RBACTransformation();
+				System.out.println(FrameDebut.getModelinPath());
+		/*load the inputs required in the transformation (the model & the profile) */
+				runner.loadModels(FrameDebut.getModelinPath(), "RBAC_Profile.profile.uml");
 					
+		/*Apply the transformation*/
+				runner.doRBACTransformation(new NullProgressMonitor());
+						
+		/*save the generated output model*/
+				runner.saveModels("MedicalManagementModelout.uml");
+					
+				//Second Transformation		
+			
+		/*create a new runner (object associated to the transformation class) */
+				RBACTransformation2 runner2 = new RBACTransformation2();
+						
+		/*load the inputs required in the transformation (the model & the profile) */
+				runner2.loadModels("MedicalManagementModelout.uml", "RBAC_Profile.profile.uml");
+						
+		/*Apply the transformation*/
+				runner2.doRBACTransformation2(new NullProgressMonitor());
+						
+		/*save the generated output model*/
+				runner2.saveModels("MedicalManagementModelout.uml");	
+				
+				//Third Transformation		
+						
+		/*create a new runner (object associated to the transformation class) */
+				RBACTransformation3 runner3 = new RBACTransformation3();
+								
+		/*load the inputs required in the transformation (the model & the profile) */
+				runner3.loadModels("MedicalManagementModelout.uml", "RBAC_Profile.profile.uml");
+								
+		/*Apply the transformation*/
+				runner3.doRBACTransformation3(new NullProgressMonitor());
+								
+		/*save the generated output model*/
+				runner3.saveModels("MedicalManagementModelout.uml");			
+						
+						
 				} catch (ATLCoreException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -266,9 +280,9 @@ public class FramePattronChoisi extends JFrame {
 				}  
 					//End RBAC_Transformation
 				
-				/*
-				 * Delete temporary files (RBACTransformation.atl and RBACTransformation.asm)
-				 */
+/*
+ * Delete temporary files (RBACTransformation.atl and RBACTransformation.asm)
+ */
 
 //				File ATLFile = new File("./src/securityPatternPlugin/handlers/RBACTransformation.atl");
 //				ATLFile.delete();
