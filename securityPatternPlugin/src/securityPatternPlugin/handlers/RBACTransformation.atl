@@ -90,8 +90,7 @@ rule Package {
 		) 
 		---do section to apply MyPro Profile
 do {
-t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='RBAC_Profile') -> first());
-thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = 'RBAC_Profile') -> first();
+---REPLACE_PROFIL---
 }
 }
 
@@ -239,11 +238,7 @@ rule Component {
 		)
 		---do section to apply stereotypes---
 		do { 
-if(s.name = 'Doctors')
-{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC_User'));}
-if(s.name = 'ManagementSystem')
-{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC_ProtectionObject'));}
-
+---REPLACE_STEREO---
 
 }
 }

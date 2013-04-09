@@ -76,11 +76,11 @@ public class FramePattronChoisi extends JFrame {
 		/*setting the parameters of the "Add Stereotype" button */
 		JButton btnAjouterComposant = new JButton("Add stereotype");
 		btnAjouterComposant.setIcon(new ImageIcon("icons/ajout.png"));
-		btnAjouterComposant.setBounds(161, 158, 147, 23);
+		btnAjouterComposant.setBounds(268, 161, 147, 23);
 		getContentPane().add(btnAjouterComposant);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(94, 52, 283, 95);
+		scrollPane.setBounds(58, 52, 357, 95);
 		getContentPane().add(scrollPane);
 		
 		/*setting the parameters of the table   */
@@ -89,15 +89,11 @@ public class FramePattronChoisi extends JFrame {
 		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		scrollPane.setViewportView(table);
 		table.setBackground(Color.LIGHT_GRAY);
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-				{null, null},
-			},
-			new String[] {
-				"Component", "Stereotype"
-			}
-		));
+		
+		final DefaultTableModel model=new DefaultTableModel(new Object[][] {{"None", "None"},{"None", "None"},},
+				new String[] {"Component", "Stereotype"});
+		table.setModel(model);
+		
 		table.getColumnModel().getColumn(0).setPreferredWidth(100);
 		table.getColumnModel().getColumn(0).setMinWidth(25);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
@@ -112,6 +108,11 @@ public class FramePattronChoisi extends JFrame {
 		
 		btnNewButton.setBounds(194, 254, 133, 23);
 		getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Delete stereotype");
+		
+		btnNewButton_1.setBounds(58, 161, 147, 23);
+		getContentPane().add(btnNewButton_1);
 //		TableColumn CompColumn = table.getColumnModel().getColumn(0);
 		TableColumn CompColumn = table.getColumnModel().getColumn(0);//get column of components
 		JComboBox comboComp = new JComboBox();// creating comboBox for components
@@ -122,6 +123,10 @@ public class FramePattronChoisi extends JFrame {
 		try {
 			for(int i=0;i<P.getComponent(FrameDebut.getModelinPath()).size();i++)
 			comboComp.addItem(P.getComponent(FrameDebut.getModelinPath()).get(i));
+			//Essai
+			for(int j=0;j<P.getProfile(FrameDebut.getModelinPath()).size();j++)
+				System.out.println(P.getProfile(FrameDebut.getModelinPath()).get(j));
+			//End Essai
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
@@ -153,7 +158,17 @@ public class FramePattronChoisi extends JFrame {
  */
 		btnAjouterComposant.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Not yet implemented
+				//Add a row in the table
+				model.addRow(new String [] {"None","None"});
+			}
+		});
+		
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Delete a row from the table
+				if(model.getRowCount()>2)
+					model.removeRow(model.getRowCount()-1);
+					else JOptionPane.showMessageDialog(null,"you can not delete this row");
 			}
 		});
 		

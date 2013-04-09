@@ -135,16 +135,16 @@ public class FrameDebut extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 				hide();
-				/*
-				 * *Open the frame responsible for entry stereotypes choice 
-				 */
+			/*
+			 * *Open the frame responsible for entry stereotypes choice 
+			 */
 				new FramePattronChoisi().show();
-				/*
-				 * /Copy initial transformations in the package
-				 */
+			/*
+			 * /Copy initial transformations in the package
+			 */
 				CopyFile c=new CopyFile();
 				
-				//Begin copy section for RBAC transformation
+			//Begin copy section for RBAC transformation
 			if(group.getSelection().getActionCommand().equals("RBAC")){
 			//	URL fileUrl = Platform.getBundle("securityPatternPlugin").getEntry("/");
 			//	ResourcesPlugin.getWorkspace();
@@ -200,7 +200,7 @@ public class FrameDebut extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				rdbtnRBAC.setEnabled(false);
 				rdbtnAUTHORIZATION.setEnabled(true);
-				//Changement des labels
+			//Changement des labels
 			}
 		});
 		
@@ -209,7 +209,7 @@ public class FrameDebut extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				rdbtnSESSION.setEnabled(false);
 				rdbtnMULTILEVEL.setEnabled(true);
-				//Changement des labels
+			//Changement des labels
 			}
 		});
 		
@@ -218,7 +218,7 @@ public class FrameDebut extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				rdbtnAUTHORIZATION.setEnabled(false);
 				rdbtnREFMONITOR.setEnabled(true);
-				//labels Modification
+			//labels Modification
 			}
 		});
 		
