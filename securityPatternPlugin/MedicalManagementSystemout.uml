@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:RBAC_Profile="http://profile/schemas/RBAC_Profile/_sSQMUKNaEeKfVLrZCD70Rw/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xsi:schemaLocation="http://profile/schemas/RBAC_Profile/_sSQMUKNaEeKfVLrZCD70Rw/0 SecurityProfile.profile.uml#_sSQMUqNaEeKfVLrZCD70Rw">
+  <uml:Model xmi:id="_-k8gkKNaEeKOC4mHbiGCqw" name="model">
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8gkaNaEeKOC4mHbiGCqw" name="PatientsComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8gkqNaEeKOC4mHbiGCqw" name="PortPatients" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aZZocKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aZa2kKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_aZcrwKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8gk6NaEeKOC4mHbiGCqw" name="DoctorsComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8glKNaEeKOC4mHbiGCqw" name="PortDoctors" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bm1r8KG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bm3hIKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_bm5WUKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8glaNaEeKOC4mHbiGCqw" name="StaffsComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8glqNaEeKOC4mHbiGCqw" name="PortStaffs" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c8MVUKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c8NjcKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_c8PYoKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8gl6NaEeKOC4mHbiGCqw" name="AdministrationComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8gmKNaEeKOC4mHbiGCqw" name="PortAdministration" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a5v8cKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a5xxoKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_a5zm0KG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8gmaNaEeKOC4mHbiGCqw" name="PatientsManagementComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8gmqNaEeKOC4mHbiGCqw" name="PortPM1" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_drH34KG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_drJGAKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_drLiQKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8gm6NaEeKOC4mHbiGCqw" name="PortPM2" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fUx9UKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fUzygKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_fU1nsKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8gnKNaEeKOC4mHbiGCqw" name="DoctorsManagementComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8gnaNaEeKOC4mHbiGCqw" name="PortDM1" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eH1CAKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eH2QIKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_eH4FUKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8gnqNaEeKOC4mHbiGCqw" name="PortDM2" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_f5t2YKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_f5vrkKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_f5yH0KG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k8gn6NaEeKOC4mHbiGCqw" name="StaffsManagementComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8goKNaEeKOC4mHbiGCqw" name="PortSM1" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eijPIKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eikdQKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_eim5gKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k8goaNaEeKOC4mHbiGCqw" name="PortSM2" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gafoMKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gaiEcKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_gaj5oKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-k9HoKNaEeKOC4mHbiGCqw" name="DataBaseComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_-k9HoaNaEeKOC4mHbiGCqw" name="PortDataBase" visibility="public" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hD1gIKG6EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hD3VUKG6EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_hD5KgKG6EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_-k9HoqNaEeKOC4mHbiGCqw" name="Class1">
+      <ownedAttribute xmi:id="_-k9Ho6NaEeKOC4mHbiGCqw" name="Patients" visibility="public" type="_-k8gkaNaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pSgAIKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pShOQKG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_pSjqgKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9HpKNaEeKOC4mHbiGCqw" name="Administration" visibility="public" type="_-k8gl6NaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_puexgKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_puf_oKG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_puh00KG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9HpaNaEeKOC4mHbiGCqw" name="Doctors" visibility="public" type="_-k8gk6NaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_p-YOsKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_p-Zc0KG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_p-bSAKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9HpqNaEeKOC4mHbiGCqw" name="Staffs" visibility="public" type="_-k8glaNaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qWQjMKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qWRxUKG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_qWTmgKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9Hp6NaEeKOC4mHbiGCqw" name="PatientsManagement" visibility="public" type="_-k8gmaNaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qtmFIKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qtnTQKG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_qtpIcKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9HqKNaEeKOC4mHbiGCqw" name="DoctorsManagement" visibility="public" type="_-k8gnKNaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rD9WsKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rD-k0KG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_rEBoIKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9HqaNaEeKOC4mHbiGCqw" name="StaffsManagement" visibility="public" type="_-k8gn6NaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_rgL_sKG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_rgNN0KG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_rgPDAKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_-k9HqqNaEeKOC4mHbiGCqw" name="DataBase" visibility="public" type="_-k9HoKNaEeKOC4mHbiGCqw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r1bP4KG5EeKJ8phupEARHQ" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r1b28KG5EeKJ8phupEARHQ" value="1"/>
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_r1e6QKG5EeKJ8phupEARHQ">
+          <value xsi:nil="true"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedConnector xmi:id="_-k9Hq6NaEeKOC4mHbiGCqw" name="Connector_Patients-PatientsManagement" visibility="public">
+        <end xmi:id="_-k9HrKNaEeKOC4mHbiGCqw" partWithPort="_-k9Ho6NaEeKOC4mHbiGCqw" role="_-k8gkqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DCW0EaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DCW0EqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9HraNaEeKOC4mHbiGCqw" partWithPort="_-k9Hp6NaEeKOC4mHbiGCqw" role="_-k8gmqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_DCXbIaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_DCXbIqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9HrqNaEeKOC4mHbiGCqw" name="Connector_Administration-PatientsManagement" visibility="public">
+        <end xmi:id="_-k9Hr6NaEeKOC4mHbiGCqw" partWithPort="_-k9HpKNaEeKOC4mHbiGCqw" role="_-k8gmKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EAWtYaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EAWtYqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9HsKNaEeKOC4mHbiGCqw" partWithPort="_-k9Hp6NaEeKOC4mHbiGCqw" role="_-k8gmqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EAWtZKG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EAWtZaG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9HsaNaEeKOC4mHbiGCqw" name="Connector_Doctors-PatientsManagement" visibility="public">
+        <end xmi:id="_-k9HsqNaEeKOC4mHbiGCqw" partWithPort="_-k9HpaNaEeKOC4mHbiGCqw" role="_-k8glKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E40mcaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E40mcqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9Hs6NaEeKOC4mHbiGCqw" partWithPort="_-k9Hp6NaEeKOC4mHbiGCqw" role="_-k8gmqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_E40mdKG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_E40mdaG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9HtKNaEeKOC4mHbiGCqw" name="Connector_Staffs-PatientsManagement" visibility="public">
+        <end xmi:id="_-k9HtaNaEeKOC4mHbiGCqw" partWithPort="_-k9HpqNaEeKOC4mHbiGCqw" role="_-k8glqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GXsYMaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GXsYMqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9HtqNaEeKOC4mHbiGCqw" partWithPort="_-k9Hp6NaEeKOC4mHbiGCqw" role="_-k8gmqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_GXsYNKG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GXsYNaG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9Ht6NaEeKOC4mHbiGCqw" name="Connector_Patients-DoctorsManagement" visibility="public">
+        <end xmi:id="_-k9HuKNaEeKOC4mHbiGCqw" partWithPort="_-k9Ho6NaEeKOC4mHbiGCqw" role="_-k8gkqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H02SsaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H02SsqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9HuaNaEeKOC4mHbiGCqw" partWithPort="_-k9HqKNaEeKOC4mHbiGCqw" role="_-k8gnaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_H02StKG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_H02StaG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9usKNaEeKOC4mHbiGCqw" name="Connector_Administration-DoctorsManagement" visibility="public">
+        <end xmi:id="_-k9usaNaEeKOC4mHbiGCqw" partWithPort="_-k9HpKNaEeKOC4mHbiGCqw" role="_-k8gmKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JcN5IqG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JcN5I6G7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9usqNaEeKOC4mHbiGCqw" partWithPort="_-k9HqKNaEeKOC4mHbiGCqw" role="_-k8gnaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JcOgMaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JcOgMqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9us6NaEeKOC4mHbiGCqw" name="Connector_Doctors-DoctorsManagement" visibility="public">
+        <end xmi:id="_-k9utKNaEeKOC4mHbiGCqw" partWithPort="_-k9HpaNaEeKOC4mHbiGCqw" role="_-k8glKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KhEoYaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KhEoYqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9utaNaEeKOC4mHbiGCqw" partWithPort="_-k9HqKNaEeKOC4mHbiGCqw" role="_-k8gnaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KhFPcaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KhFPcqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9utqNaEeKOC4mHbiGCqw" name="Connector_Staffs-DoctorsManagement" visibility="public">
+        <end xmi:id="_-k9ut6NaEeKOC4mHbiGCqw" partWithPort="_-k9HpqNaEeKOC4mHbiGCqw" role="_-k8glqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LovbEqG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LovbE6G7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9uuKNaEeKOC4mHbiGCqw" partWithPort="_-k9HqKNaEeKOC4mHbiGCqw" role="_-k8gnaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LowCIaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LowCIqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9uuaNaEeKOC4mHbiGCqw" name="Connector_Administration-StaffsManagement" visibility="public">
+        <end xmi:id="_-k9uuqNaEeKOC4mHbiGCqw" partWithPort="_-k9HpKNaEeKOC4mHbiGCqw" role="_-k8gmKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M0qboaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M0qboqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9uu6NaEeKOC4mHbiGCqw" partWithPort="_-k9HqaNaEeKOC4mHbiGCqw" role="_-k8goKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_M0qbpKG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_M0qbpaG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9uvKNaEeKOC4mHbiGCqw" name="Connector_Doctors-StaffsManagement" visibility="public">
+        <end xmi:id="_-k9uvaNaEeKOC4mHbiGCqw" partWithPort="_-k9HpaNaEeKOC4mHbiGCqw" role="_-k8glKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Nh7xUqG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Nh7xU6G7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9uvqNaEeKOC4mHbiGCqw" partWithPort="_-k9HqaNaEeKOC4mHbiGCqw" role="_-k8goKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Nh8YYaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Nh8YYqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9uv6NaEeKOC4mHbiGCqw" name="Connector_Staffs-StaffsManagement" visibility="public">
+        <end xmi:id="_-k9uwKNaEeKOC4mHbiGCqw" partWithPort="_-k9HpqNaEeKOC4mHbiGCqw" role="_-k8glqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Onu7waG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Onu7wqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9uwaNaEeKOC4mHbiGCqw" partWithPort="_-k9HqaNaEeKOC4mHbiGCqw" role="_-k8goKNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Onvi0aG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Onvi0qG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9uwqNaEeKOC4mHbiGCqw" name="Connector_PatientsManagement-DataBase" visibility="public">
+        <end xmi:id="_-k9uw6NaEeKOC4mHbiGCqw" partWithPort="_-k9Hp6NaEeKOC4mHbiGCqw" role="_-k8gm6NaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QccaoqG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Qccao6G7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9uxKNaEeKOC4mHbiGCqw" partWithPort="_-k9HqqNaEeKOC4mHbiGCqw" role="_-k9HoaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_QcdBsaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_QcdBsqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9uxaNaEeKOC4mHbiGCqw" name="Connector_DoctorsManagement-DataBase" visibility="public">
+        <end xmi:id="_-k9uxqNaEeKOC4mHbiGCqw" partWithPort="_-k9HqKNaEeKOC4mHbiGCqw" role="_-k8gnqNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RIbW4qG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RIbW46G7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9ux6NaEeKOC4mHbiGCqw" partWithPort="_-k9HqqNaEeKOC4mHbiGCqw" role="_-k9HoaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RIb98aG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RIb98qG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+      <ownedConnector xmi:id="_-k9uyKNaEeKOC4mHbiGCqw" name="Connector_StaffsManagement-DataBase" visibility="public">
+        <end xmi:id="_-k9uyaNaEeKOC4mHbiGCqw" partWithPort="_-k9HqaNaEeKOC4mHbiGCqw" role="_-k8goaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R1GPoaG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R1GPoqG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+        <end xmi:id="_-k9uyqNaEeKOC4mHbiGCqw" partWithPort="_-k9HqqNaEeKOC4mHbiGCqw" role="_-k9HoaNaEeKOC4mHbiGCqw">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_R1GPpKG7EeKJ8phupEARHQ" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_R1GPpaG7EeKJ8phupEARHQ" value="1"/>
+        </end>
+      </ownedConnector>
+    </packagedElement>
+    <profileApplication xmi:id="_-k9uy6NaEeKOC4mHbiGCqw">
+      <eAnnotations xmi:id="_-k9uzKNaEeKOC4mHbiGCqw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="SecurityProfile.profile.uml#_sSQMUqNaEeKfVLrZCD70Rw"/>
+      </eAnnotations>
+      <appliedProfile href="SecurityProfile.profile.uml#_h1pgAKNZEeKfVLrZCD70Rw"/>
+    </profileApplication>
+  </uml:Model>
+  <RBAC_Profile:RBACUser xmi:id="_-k9uzaNaEeKOC4mHbiGCqw" base_Property="_-k9Ho6NaEeKOC4mHbiGCqw"/>
+  <RBAC_Profile:RBACRole xmi:id="_-k9uzqNaEeKOC4mHbiGCqw" base_Port="_-k8gkqNaEeKOC4mHbiGCqw"/>
+  <RBAC_Profile:RBACRight xmi:id="_-k-VwKNaEeKOC4mHbiGCqw" base_Connector="_-k9Hq6NaEeKOC4mHbiGCqw"/>
+  <RBAC_Profile:RBACProtectionObject xmi:id="_-k-VwaNaEeKOC4mHbiGCqw" base_Property="_-k9Hp6NaEeKOC4mHbiGCqw"/>
+</xmi:XMI>

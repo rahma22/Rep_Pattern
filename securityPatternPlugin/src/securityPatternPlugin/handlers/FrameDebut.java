@@ -89,16 +89,15 @@ public class FrameDebut extends JFrame {
 		rdbtnRBAC.setBounds(6, 30, 80, 23);
 		panel.add(rdbtnRBAC);
 		
-		final JRadioButton rdbtnSESSION = new JRadioButton("Session");
-		rdbtnSESSION.setActionCommand("Session");
-		rdbtnSESSION.setBounds(6, 56, 109, 23);
-		panel.add(rdbtnSESSION);
+		final JRadioButton rdbtnAuthenticator = new JRadioButton("Authenticator");
+		rdbtnAuthenticator.setActionCommand("Authenticator");
+		rdbtnAuthenticator.setBounds(6, 56, 109, 23);
+		panel.add(rdbtnAuthenticator);
 		
-		final JRadioButton rdbtnAUTHORIZATION = new JRadioButton("Authorization");
-		rdbtnAUTHORIZATION.setActionCommand("Authorization");
-		rdbtnAUTHORIZATION.setEnabled(false);
-		rdbtnAUTHORIZATION.setBounds(6, 82, 109, 23);
-		panel.add(rdbtnAUTHORIZATION);
+		final JRadioButton rdbtnCheckPoint = new JRadioButton("CheckPoint");
+		rdbtnCheckPoint.setActionCommand("CheckPoint");
+		rdbtnCheckPoint.setBounds(6, 82, 109, 23);
+		panel.add(rdbtnCheckPoint);
 		
 		final JRadioButton rdbtnMULTILEVEL = new JRadioButton("Multilevel");
 		rdbtnMULTILEVEL.setActionCommand("Multilevel");
@@ -118,8 +117,8 @@ public class FrameDebut extends JFrame {
 		
 		final ButtonGroup group = new ButtonGroup();
 		group.add(rdbtnRBAC);
-		group.add(rdbtnSESSION);
-		group.add(rdbtnAUTHORIZATION);
+		group.add(rdbtnAuthenticator);
+		group.add(rdbtnCheckPoint);
 		group.add(rdbtnMULTILEVEL);
 		group.add(rdbtnREFMONITOR);
 		
@@ -144,19 +143,19 @@ public class FrameDebut extends JFrame {
 			 */
 				CopyFile c=new CopyFile();
 				
-			//Begin copy section for RBAC transformation
-			if(group.getSelection().getActionCommand().equals("RBAC")){
+			//Begin copy InitialTransformation 
+//			if(group.getSelection().getActionCommand().equals("RBAC")){}
 			//	URL fileUrl = Platform.getBundle("securityPatternPlugin").getEntry("/");
 			//	ResourcesPlugin.getWorkspace();
 				System.out.println(System.getProperty("user.dir"));
 				
 				try {
-					c.copy("./transformations/initialTransformations/RBACTransformation.atl","./src/securityPatternPlugin/handlers/RBACTransformation.atl");
-					c.copy("./transformations/initialTransformations/RBACTransformation.asm","./src/securityPatternPlugin/handlers/RBACTransformation.asm");
+					c.copy("./transformations/initialTransformations/InitialTransformation.atl","./src/securityPatternPlugin/handlers/InitialTransformation.atl");
+					c.copy("./transformations/initialTransformations/InitialTransformation.asm","./src/securityPatternPlugin/handlers/InitialTransformation.asm");
 				} catch (IOException e) {
 					e.printStackTrace();
-				}}
-			//End Copy section for RBAC transformation
+				}
+			//End Copy InitialTransformation
 			
 			}
 		});
@@ -189,25 +188,22 @@ public class FrameDebut extends JFrame {
 		rdbtnRBAC.addActionListener(new ActionListener() {
 			//RBAC radio button action
 			public void actionPerformed(ActionEvent arg0) {
-				//setProfile("MyProfile");
 				setProfile("RBAC_Profile");
 				rdbtnMULTILEVEL.setEnabled(true);
 				//Changement des labels
 			}
 		});
-		rdbtnSESSION.addActionListener(new ActionListener() {
+		rdbtnAuthenticator.addActionListener(new ActionListener() {
 			// SESSION radio button action
 			public void actionPerformed(ActionEvent arg0) {
-				rdbtnRBAC.setEnabled(false);
-				rdbtnAUTHORIZATION.setEnabled(true);
-			//Changement des labels
+				setProfile("Authenticator_Profile");
 			}
 		});
 		
-		rdbtnAUTHORIZATION.addActionListener(new ActionListener() {
+		rdbtnCheckPoint.addActionListener(new ActionListener() {
 			// AUTHORIZATION radio button action
 			public void actionPerformed(ActionEvent arg0) {
-				rdbtnSESSION.setEnabled(false);
+				setProfile("CheckPoint_Profile");
 				rdbtnMULTILEVEL.setEnabled(true);
 			//Changement des labels
 			}
@@ -216,7 +212,7 @@ public class FrameDebut extends JFrame {
 		rdbtnMULTILEVEL.addActionListener(new ActionListener() {
 			// MULTILEVEL radio button action
 			public void actionPerformed(ActionEvent arg0) {
-				rdbtnAUTHORIZATION.setEnabled(false);
+				rdbtnCheckPoint.setEnabled(false);
 				rdbtnREFMONITOR.setEnabled(true);
 			//labels Modification
 			}

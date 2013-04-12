@@ -29,7 +29,7 @@ import org.eclipse.m2m.atl.core.launch.ILauncher;
 import org.eclipse.m2m.atl.engine.emfvm.launch.EMFVMLauncher;
 
 
-public class RBACTransformation {
+public class AuthenticatorTransformation2 {
 	private Properties properties;
 	protected IModel inModel;	
 	protected IModel in1Model;	
@@ -47,9 +47,9 @@ public class RBACTransformation {
 			if (args.length < 3) {
 				System.out.println("Arguments not valid : {IN_model_path, IN1_model_path, OUT_model_path}.");
 			} else {
-				RBACTransformation runner = new RBACTransformation();
+				AuthenticatorTransformation2 runner = new AuthenticatorTransformation2();
 				runner.loadModels(args[0], args[1]);
-				runner.doRBACTransformation(new NullProgressMonitor());
+				runner.doAuthenticatorTransformation2(new NullProgressMonitor());
 				runner.saveModels(args[2]);
 			}
 		} catch (ATLCoreException e) {
@@ -61,9 +61,9 @@ public class RBACTransformation {
 		}
 	}
 
-	public RBACTransformation() throws IOException {
+	public AuthenticatorTransformation2() throws IOException {
 		properties = new Properties();
-		properties.load(getFileURL("RBACTransformation.properties").openStream());
+		properties.load(getFileURL("AuthenticatorTransformation2.properties").openStream());
 		EPackage.Registry.INSTANCE.put(getMetamodelUri("UML2"), org.eclipse.uml2.uml.UMLPackage.eINSTANCE);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl());
 	}
@@ -123,7 +123,7 @@ public class RBACTransformation {
 	 *
 	 * @generated
 	 */
-	public Object doRBACTransformation(IProgressMonitor monitor) throws ATLCoreException, IOException, ATLExecutionException {
+	public Object doAuthenticatorTransformation2(IProgressMonitor monitor) throws ATLCoreException, IOException, ATLExecutionException {
 		ILauncher launcher = new EMFVMLauncher();
 		Map<String, Object> launcherOptions = getOptions();
 		launcher.initialize(launcherOptions);
@@ -145,7 +145,7 @@ public class RBACTransformation {
 	 */
 	protected InputStream[] getModulesList() throws IOException {
 		InputStream[] modules = null;
-		String modulesList = properties.getProperty("RBACTransformation.modules");
+		String modulesList = properties.getProperty("AuthenticatorTransformation2.modules");
 		if (modulesList != null) {
 			String[] moduleNames = modulesList.split(",");
 			modules = new InputStream[moduleNames.length];
@@ -167,7 +167,7 @@ public class RBACTransformation {
 	 * @generated
 	 */
 	protected String getMetamodelUri(String metamodelName) {
-		return properties.getProperty("RBACTransformation.metamodels." + metamodelName);
+		return properties.getProperty("AuthenticatorTransformation2.metamodels." + metamodelName);
 	}
 	
 	/**
@@ -180,7 +180,7 @@ public class RBACTransformation {
 	 * @generated
 	 */
 	protected InputStream getLibraryAsStream(String libraryName) throws IOException {
-		return getFileURL(properties.getProperty("RBACTransformation.libraries." + libraryName)).openStream();
+		return getFileURL(properties.getProperty("AuthenticatorTransformation2.libraries." + libraryName)).openStream();
 	}
 	
 	/**
@@ -193,8 +193,8 @@ public class RBACTransformation {
 	protected Map<String, Object> getOptions() {
 		Map<String, Object> options = new HashMap<String, Object>();
 		for (Entry<Object, Object> entry : properties.entrySet()) {
-			if (entry.getKey().toString().startsWith("RBACTransformation.options.")) {
-				options.put(entry.getKey().toString().replaceFirst("RBACTransformation.options.", ""), 
+			if (entry.getKey().toString().startsWith("AuthenticatorTransformation2.options.")) {
+				options.put(entry.getKey().toString().replaceFirst("AuthenticatorTransformation2.options.", ""), 
 				entry.getValue().toString());
 			}
 		}
@@ -215,14 +215,14 @@ public class RBACTransformation {
 	protected static URL getFileURL(String fileName) throws IOException {
 		final URL fileURL;
 		if (isEclipseRunning()) {
-			URL resourceURL = RBACTransformation.class.getResource(fileName);
+			URL resourceURL = AuthenticatorTransformation2.class.getResource(fileName);
 			if (resourceURL != null) {
 				fileURL = FileLocator.toFileURL(resourceURL);
 			} else {
 				fileURL = null;
 			}
 		} else {
-			fileURL = RBACTransformation.class.getResource(fileName);
+			fileURL = AuthenticatorTransformation2.class.getResource(fileName);
 		}
 		if (fileURL == null) {
 			throw new IOException("'" + fileName + "' not found");

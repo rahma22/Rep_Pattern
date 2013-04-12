@@ -1,0 +1,295 @@
+-- @nsURI UML2=http://www.eclipse.org/uml2/4.0.0/UML
+-- @path PRO=/essaiTransformation/SecurityProfile.profile.uml
+
+module InitialTransformation;
+create OUT : UML2 from IN : UML2, IN1 : PRO;
+
+---------------------------------------------BEGIN HELPERS----------------------------------------------------
+
+--Helper 'getStereotype'
+--Return the stereotype from the applied profile
+helper def: getStereotype(p: UML2!Profile, name: String): UML2!Stereotype =
+	p.ownedStereotype -> select(s | s.name = name) -> first();
+--End Helper 'getStereotype'
+
+--Helper 'hasStereotype'
+--Return whether the element has the stereotype in the helper parameter
+helper context UML2!Element def: hasStereotype(stereotype : String) : Boolean =
+	self.getAppliedStereotypes() -> collect(st | st.name) -> includes(stereotype);
+--End Helper 'hasStereotype'
+
+--helper context UML2!"uml::Element" def: hasStereotype(stereotype: String): Boolean =
+--	self.getAppliedStereotypes() -> exists(c | c.name = stereotype);
+
+--Helper 'hasProfile'
+--Return whether the Model has the profile in the helper parameter
+helper context UML2!"uml::Element" def: hasProfile(profile: String): Boolean =
+	self.getNearestPackage().getAllAppliedProfiles()-> exists(c | c.name = profile);
+--End Helper 'hasProfile'
+
+--Helper 'getProfile'
+--Return the profile applied on the model
+helper context UML2!"uml::Element" def:getProfile(name : String) : UML2!"uml::Package" =
+UML2!"uml::Package".allInstances()->select(s | s.name = name).first();
+--End Helper 'getProfile--
+
+---------------------------------------------END HELPERS------------------------------------------------------
+
+--------------------------------------------BEGIN RULES-------------------------------------------------------
+rule Model {
+	--Copy Model Bloc--
+	from
+		s: UML2!"uml::Model" in IN
+	to
+		t: UML2!"uml::Model" (
+			--__xmiID__ <- s.__xmiID__,
+			name <- s.name.debug('Model'),
+			visibility <- s.visibility,
+			viewpoint <- s.viewpoint,
+			eAnnotations <- s.eAnnotations,
+			ownedComment <- s.ownedComment,
+			clientDependency <- s.clientDependency,
+			nameExpression <- s.nameExpression,
+			elementImport <- s.elementImport,
+			--packageImport <- s.packageImport,
+			ownedRule <- s.ownedRule,
+			templateParameter <- s.templateParameter,
+			templateBinding <- s.templateBinding,
+			ownedTemplateSignature <- s.ownedTemplateSignature,
+			packageMerge <- s.packageMerge,
+			packagedElement <- s.packagedElement,
+			profileApplication <- s.profileApplication)
+			--End Copy Model Bloc--
+			
+			--Operations on Model--
+		do {
+			--Reapply existant Profile--
+for (p in s.getAllAppliedProfiles()) {t.applyProfile(p);}	
+			--End Reapply existant Profile--
+---REPLACE_PROFIL---
+}
+		--End Operations on Model--
+}
+
+
+rule Class {
+	--Copy Class Bloc--
+    from s : UML2!"uml::Class" in IN (s.oclIsTypeOf(UML2!"uml::Class"))
+    to t : UML2!"uml::Class" (
+        name <- s.name.debug('Class'),
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isAbstract <- s.isAbstract,
+        isActive <- s.isActive,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        elementImport <- s.elementImport,
+        packageImport <- s.packageImport,
+        ownedRule <- s.ownedRule,
+        templateParameter <- s.templateParameter,
+        templateBinding <- s.templateBinding,
+        ownedTemplateSignature <- s.ownedTemplateSignature,
+        generalization <- s.generalization,
+        powertypeExtent <- s.powertypeExtent,
+        redefinedClassifier <- s.redefinedClassifier,
+        substitution <- s.substitution,
+        representation <- s.representation,
+        collaborationUse <- s.collaborationUse,
+        ownedUseCase <- s.ownedUseCase,
+        useCase <- s.useCase,
+        ownedAttribute <- s.ownedAttribute,
+        ownedConnector <- s.ownedConnector,
+        ownedBehavior <- s.ownedBehavior,
+        classifierBehavior <- s.classifierBehavior,
+        interfaceRealization <- s.interfaceRealization,
+        nestedClassifier <- s.nestedClassifier,
+        ownedOperation <- s.ownedOperation,
+        ownedReception <- s.ownedReception)
+		--End Copy Class Bloc--
+}
+
+rule Component {
+	--Copy Component Bloc--
+    from s : UML2!"uml::Component" in IN
+    to t : UML2!"uml::Component" (
+      --  __xmiID__ <- s.__xmiID__,
+        name <- s.name.debug('Component'),
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isAbstract <- s.isAbstract,
+        isActive <- s.isActive,
+        isIndirectlyInstantiated <- s.isIndirectlyInstantiated,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        elementImport <- s.elementImport,
+        packageImport <- s.packageImport,
+        ownedRule <- s.ownedRule,
+        templateParameter <- s.templateParameter,
+        templateBinding <- s.templateBinding,
+        ownedTemplateSignature <- s.ownedTemplateSignature,
+        generalization <- s.generalization,
+        powertypeExtent <- s.powertypeExtent,
+        redefinedClassifier <- s.redefinedClassifier,
+        substitution <- s.substitution,
+        representation <- s.representation,
+        collaborationUse <- s.collaborationUse,
+        ownedUseCase <- s.ownedUseCase,
+        useCase <- s.useCase,
+        ownedAttribute <- s.ownedAttribute,
+        ownedConnector <- s.ownedConnector,
+        ownedBehavior <- s.ownedBehavior,
+        classifierBehavior <- s.classifierBehavior,
+        interfaceRealization <- s.interfaceRealization,
+        nestedClassifier <- s.nestedClassifier,
+        ownedOperation <- s.ownedOperation,
+        ownedReception <- s.ownedReception,
+        packagedElement <- s.packagedElement,
+        realization <- s.realization)
+		--End Copy Component Bloc--
+		
+		--Operations on Component--
+	do { 
+	--Reapply existant Stereotypes--	
+		for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
+	--End Reapply existant Stereotypes--
+	}	
+	--End Operations on Component--
+}
+
+rule Property {
+	--Copy Property Bloc--
+    from s : UML2!"uml::Property" in IN (s.oclIsTypeOf(UML2!"uml::Property"))
+    to t : UML2!"uml::Property" (
+       -- __xmiID__ <- s.__xmiID__,
+        name <- s.name.debug('Property'),
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isStatic <- s.isStatic,
+        isOrdered <- s.isOrdered,
+        isUnique <- s.isUnique,
+        isReadOnly <- s.isReadOnly,
+        isDerived <- s.isDerived,
+        isDerivedUnion <- s.isDerivedUnion,
+        aggregation <- s.aggregation,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        type <- s.type,
+        upperValue <- s.upperValue,
+        lowerValue <- s.lowerValue,
+        templateParameter <- s.templateParameter,
+        deployment <- s.deployment,
+        redefinedProperty <- s.redefinedProperty,
+        defaultValue <- s.defaultValue,
+        subsettedProperty <- s.subsettedProperty,
+        association <- s.association,
+        qualifier <- s.qualifier)
+		--End Copy Property Bloc--
+		
+		--Operations on Property--
+		do {
+			--Reapply existant Stereotypes--
+			for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
+			--End Reapply existant Stereotypes--
+---REPLACE_STEREO---
+
+}	
+		--End Operations on Property--
+}
+
+
+rule Connector {
+	--Copy Connector Bloc--
+    from s : UML2!"uml::Connector" in IN
+    to t : UML2!"uml::Connector" (
+        --__xmiID__ <- s.__xmiID__,
+        name <- s.name.debug('Connector'),
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isStatic <- s.isStatic,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        type <- s.type,
+        redefinedConnector <- s.redefinedConnector,
+        end <- s.end,
+        contract <- s.contract)
+		--End Copy Connector Bloc--
+		
+		--Operations on Connector--
+		do { 
+			--Reapply existant Stereotypes--
+			for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
+			--End Reapply existant Stereotypes--
+}
+		--End Operations on Connector--
+}
+
+rule ConnectorEnd {
+	--Copy ConnectorEnd Bloc--
+    from s : UML2!"uml::ConnectorEnd" in IN
+    to t : UML2!"uml::ConnectorEnd" (
+        --__xmiID__ <- s.__xmiID__,
+        isOrdered <- s.isOrdered.debug('ConnectorEnd'),
+        isUnique <- s.isUnique,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        upperValue <- s.upperValue,
+        lowerValue <- s.lowerValue,
+        role <- s.role,
+        partWithPort <- s.partWithPort)
+	--Copy ConnectorEnd Bloc--	
+}
+
+rule Port {
+	--Copy Port Bloc--
+    from s : UML2!"uml::Port" in IN
+    to t : UML2!"uml::Port" (
+        --__xmiID__ <- s.__xmiID__,
+        name <- s.name.debug('Port'),
+        visibility <- s.visibility,
+        isLeaf <- s.isLeaf,
+        isStatic <- s.isStatic,
+        isOrdered <- s.isOrdered,
+        isUnique <- s.isUnique,
+        isReadOnly <- s.isReadOnly,
+        isDerived <- s.isDerived,
+        isDerivedUnion <- s.isDerivedUnion,
+        aggregation <- s.aggregation,
+        isBehavior <- s.isBehavior,
+        isService <- s.isService,
+        eAnnotations <- s.eAnnotations,
+        ownedComment <- s.ownedComment,
+        clientDependency <- s.clientDependency,
+        nameExpression <- s.nameExpression,
+        type <- s.type,
+        upperValue <- s.upperValue,
+        lowerValue <- s.lowerValue,
+        templateParameter <- s.templateParameter,
+        deployment <- s.deployment,
+        redefinedProperty <- s.redefinedProperty,
+        defaultValue <- s.defaultValue,
+        subsettedProperty <- s.subsettedProperty,
+        association <- s.association,
+        qualifier <- s.qualifier,
+        redefinedPort <- s.redefinedPort,
+        protocol <- s.protocol)
+		--End Copy Port Bloc--
+		
+		--Operations on Port--
+		do {
+			--Reapply existant Stereotypes--			
+			for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
+			--End Reapply existant Stereotypes--
+}
+		--End Operations on Port--
+}
+
+
+--------------------------------------------END RULES------------------------------------------------------

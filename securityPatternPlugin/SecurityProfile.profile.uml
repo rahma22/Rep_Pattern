@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Profile xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_fiTkYKNZEeKfVLrZCD70Rw" name="profile">
+  <eAnnotations xmi:id="_sSOXIaNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_sSO-MKNaEeKfVLrZCD70Rw" name="profile" nsURI="http:///schemas/profile/_sSOXIKNaEeKfVLrZCD70Rw/0" nsPrefix="profile">
+      <eAnnotations xmi:id="_sSO-MaNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/4.0.0/UML" references="_h1pgAKNZEeKfVLrZCD70Rw"/>
+      <eAnnotations xmi:id="_sSTPoaNaEeKfVLrZCD70Rw" source="PapyrusVersion">
+        <details xmi:id="_sSTPoqNaEeKfVLrZCD70Rw" key="Version" value="0.0.1"/>
+        <details xmi:id="_sSTPo6NaEeKfVLrZCD70Rw" key="Comment" value=""/>
+        <details xmi:id="_sSTPpKNaEeKfVLrZCD70Rw" key="Copyright" value=""/>
+        <details xmi:id="_sSTPpaNaEeKfVLrZCD70Rw" key="Date" value="2013-04-12"/>
+        <details xmi:id="_sSTPpqNaEeKfVLrZCD70Rw" key="Author" value="Yousr"/>
+      </eAnnotations>
+    </contents>
+  </eAnnotations>
+  <packagedElement xmi:type="uml:Profile" xmi:id="_h1pgAKNZEeKfVLrZCD70Rw" name="RBAC_Profile" metaclassReference="_oWbFYKNZEeKfVLrZCD70Rw _oWbscKNZEeKfVLrZCD70Rw _oWcTgKNZEeKfVLrZCD70Rw">
+    <eAnnotations xmi:id="_sSQMUaNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_sSQMUqNaEeKfVLrZCD70Rw" name="RBAC_Profile" nsURI="http://profile/schemas/RBAC_Profile/_sSQMUKNaEeKfVLrZCD70Rw/0" nsPrefix="RBAC_Profile">
+        <eAnnotations xmi:id="_sSW6AKNaEeKfVLrZCD70Rw" source="PapyrusVersion">
+          <details xmi:id="_sSW6AaNaEeKfVLrZCD70Rw" key="Version" value="0.0.1"/>
+          <details xmi:id="_sSW6AqNaEeKfVLrZCD70Rw" key="Comment" value=""/>
+          <details xmi:id="_sSW6A6NaEeKfVLrZCD70Rw" key="Copyright" value=""/>
+          <details xmi:id="_sSW6BKNaEeKfVLrZCD70Rw" key="Date" value="2013-04-12"/>
+          <details xmi:id="_sSW6BaNaEeKfVLrZCD70Rw" key="Author" value="Yousr"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSQMU6NaEeKfVLrZCD70Rw" name="RBACUser">
+          <eAnnotations xmi:id="_sSQMVKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_r3IMAKNZEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSQMVaNaEeKfVLrZCD70Rw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSQMV6NaEeKfVLrZCD70Rw" name="RBACProtectionObject">
+          <eAnnotations xmi:id="_sSQMWKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_tV9hgKNZEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSQMWaNaEeKfVLrZCD70Rw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSQMW6NaEeKfVLrZCD70Rw" name="RBACRole">
+          <eAnnotations xmi:id="_sSQzYKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_xgMGQKNZEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSQzYaNaEeKfVLrZCD70Rw" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSQzY6NaEeKfVLrZCD70Rw" name="RBACRight">
+          <eAnnotations xmi:id="_sSQzZKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_zgw24KNZEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSQzZaNaEeKfVLrZCD70Rw" name="base_Connector" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Connector"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_oWbFYKNZEeKfVLrZCD70Rw" alias="Connector">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+    </elementImport>
+    <elementImport xmi:id="_oWbscKNZEeKfVLrZCD70Rw" alias="Port">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </elementImport>
+    <elementImport xmi:id="_oWcTgKNZEeKfVLrZCD70Rw" alias="Property">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_r3IMAKNZEeKfVLrZCD70Rw" name="RBAC.User">
+      <ownedAttribute xmi:id="_4KbwsKNZEeKfVLrZCD70Rw" name="base_Property" association="_4KbwsaNZEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_tV9hgKNZEeKfVLrZCD70Rw" name="RBAC.ProtectionObject">
+      <ownedAttribute xmi:id="_5ZPGIKNZEeKfVLrZCD70Rw" name="base_Property" association="_5ZPtMKNZEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_xgMGQKNZEeKfVLrZCD70Rw" name="RBAC.Role">
+      <ownedAttribute xmi:id="_3nv6YKNZEeKfVLrZCD70Rw" name="base_Port" association="_3nv6YaNZEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_zgw24KNZEeKfVLrZCD70Rw" name="RBAC.Right">
+      <ownedAttribute xmi:id="_3Dpu0KNZEeKfVLrZCD70Rw" name="base_Connector" association="_3DqV4KNZEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Connector"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_3DqV4KNZEeKfVLrZCD70Rw" name="E_RBAC.Right_Connector1" memberEnd="_3DqV4aNZEeKfVLrZCD70Rw _3Dpu0KNZEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_3DqV4aNZEeKfVLrZCD70Rw" name="extension_RBAC.Right" type="_zgw24KNZEeKfVLrZCD70Rw" aggregation="composite" association="_3DqV4KNZEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_3nv6YaNZEeKfVLrZCD70Rw" name="E_RBAC.Role_Port1" memberEnd="_3nv6YqNZEeKfVLrZCD70Rw _3nv6YKNZEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_3nv6YqNZEeKfVLrZCD70Rw" name="extension_RBAC.Role" type="_xgMGQKNZEeKfVLrZCD70Rw" aggregation="composite" association="_3nv6YaNZEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_4KbwsaNZEeKfVLrZCD70Rw" name="E_RBAC.User_Property1" memberEnd="_4KbwsqNZEeKfVLrZCD70Rw _4KbwsKNZEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_4KbwsqNZEeKfVLrZCD70Rw" name="extension_RBAC.User" type="_r3IMAKNZEeKfVLrZCD70Rw" aggregation="composite" association="_4KbwsaNZEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_5ZPtMKNZEeKfVLrZCD70Rw" name="E_RBAC.ProtectionObject_Property1" memberEnd="_5ZPtMaNZEeKfVLrZCD70Rw _5ZPGIKNZEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_5ZPtMaNZEeKfVLrZCD70Rw" name="extension_RBAC.ProtectionObject" type="_tV9hgKNZEeKfVLrZCD70Rw" aggregation="composite" association="_5ZPtMKNZEeKfVLrZCD70Rw"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Profile" xmi:id="_6dR9EKNZEeKfVLrZCD70Rw" name="Authenticator_Profile" metaclassReference="_BnC1EKNaEeKfVLrZCD70Rw _BnC1EaNaEeKfVLrZCD70Rw">
+    <eAnnotations xmi:id="_sSRacKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_sSRacaNaEeKfVLrZCD70Rw" name="Authenticator_Profile" nsURI="http://profile/schemas/Authenticator_Profile/_sSQzZ6NaEeKfVLrZCD70Rw/0" nsPrefix="Authenticator_Profile">
+        <eAnnotations xmi:id="_sSYIIKNaEeKfVLrZCD70Rw" source="PapyrusVersion">
+          <details xmi:id="_sSYIIaNaEeKfVLrZCD70Rw" key="Version" value="0.0.1"/>
+          <details xmi:id="_sSYIIqNaEeKfVLrZCD70Rw" key="Comment" value=""/>
+          <details xmi:id="_sSYII6NaEeKfVLrZCD70Rw" key="Copyright" value=""/>
+          <details xmi:id="_sSYIJKNaEeKfVLrZCD70Rw" key="Date" value="2013-04-12"/>
+          <details xmi:id="_sSYIJaNaEeKfVLrZCD70Rw" key="Author" value="Yousr"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSRacqNaEeKfVLrZCD70Rw" name="AuthenticatorUser">
+          <eAnnotations xmi:id="_sSRac6NaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_E6fi0KNaEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSRadKNaEeKfVLrZCD70Rw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSRadqNaEeKfVLrZCD70Rw" name="AuthenticatorAuthenticator">
+          <eAnnotations xmi:id="_sSRad6NaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_HvW3IKNaEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSRaeKNaEeKfVLrZCD70Rw" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_BnC1EKNaEeKfVLrZCD70Rw" alias="Port">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </elementImport>
+    <elementImport xmi:id="_BnC1EaNaEeKfVLrZCD70Rw" alias="Property">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_E6fi0KNaEeKfVLrZCD70Rw" name="Authenticator.User">
+      <ownedAttribute xmi:id="_LcU4IKNaEeKfVLrZCD70Rw" name="base_Property" association="_LcU4IaNaEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_HvW3IKNaEeKfVLrZCD70Rw" name="Authenticator.Authenticator">
+      <ownedAttribute xmi:id="_KqvqMKNaEeKfVLrZCD70Rw" name="base_Port" association="_KqvqMaNaEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_KqvqMaNaEeKfVLrZCD70Rw" name="E_Authenticator.Authenticator_Port1" memberEnd="_KqwRQKNaEeKfVLrZCD70Rw _KqvqMKNaEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_KqwRQKNaEeKfVLrZCD70Rw" name="extension_Authenticator.Authenticator" type="_HvW3IKNaEeKfVLrZCD70Rw" aggregation="composite" association="_KqvqMaNaEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_LcU4IaNaEeKfVLrZCD70Rw" name="E_Authenticator.User_Property1" memberEnd="_LcU4IqNaEeKfVLrZCD70Rw _LcU4IKNaEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_LcU4IqNaEeKfVLrZCD70Rw" name="extension_Authenticator.User" type="_E6fi0KNaEeKfVLrZCD70Rw" aggregation="composite" association="_LcU4IaNaEeKfVLrZCD70Rw"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Profile" xmi:id="_NVFwkKNaEeKfVLrZCD70Rw" name="CheckPoint_Profile" metaclassReference="_TLsXkKNaEeKfVLrZCD70Rw _TLs-oKNaEeKfVLrZCD70Rw">
+    <eAnnotations xmi:id="_sSSokaNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <contents xmi:type="ecore:EPackage" xmi:id="_sSSokqNaEeKfVLrZCD70Rw" name="CheckPoint_Profile" nsURI="http://profile/schemas/CheckPoint_Profile/_sSSokKNaEeKfVLrZCD70Rw/0" nsPrefix="CheckPoint_Profile">
+        <eAnnotations xmi:id="_sSakYKNaEeKfVLrZCD70Rw" source="PapyrusVersion">
+          <details xmi:id="_sSakYaNaEeKfVLrZCD70Rw" key="Version" value="0.0.1"/>
+          <details xmi:id="_sSakYqNaEeKfVLrZCD70Rw" key="Comment" value=""/>
+          <details xmi:id="_sSakY6NaEeKfVLrZCD70Rw" key="Copyright" value=""/>
+          <details xmi:id="_sSakZKNaEeKfVLrZCD70Rw" key="Date" value="2013-04-12"/>
+          <details xmi:id="_sSakZaNaEeKfVLrZCD70Rw" key="Author" value="Yousr"/>
+        </eAnnotations>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSSok6NaEeKfVLrZCD70Rw" name="CheckPointClient">
+          <eAnnotations xmi:id="_sSSolKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_U2PN0KNaEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSSolaNaEeKfVLrZCD70Rw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSSol6NaEeKfVLrZCD70Rw" name="CheckPointProtectedSystem">
+          <eAnnotations xmi:id="_sSSomKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_ZHfnoKNaEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSSomaNaEeKfVLrZCD70Rw" name="base_Property" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Property"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSSom6NaEeKfVLrZCD70Rw" name="CheckPointCheckPoint">
+          <eAnnotations xmi:id="_sSSonKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_c3B0cKNaEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSSonaNaEeKfVLrZCD70Rw" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xmi:type="ecore:EClass" xmi:id="_sSSon6NaEeKfVLrZCD70Rw" name="CheckPointSingleAccessPoint">
+          <eAnnotations xmi:id="_sSSooKNaEeKfVLrZCD70Rw" source="http://www.eclipse.org/uml2/2.0.0/UML" references="_hhSkIKNaEeKfVLrZCD70Rw"/>
+          <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_sSSooaNaEeKfVLrZCD70Rw" name="base_Port" ordered="false" lowerBound="1">
+            <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/4.0.0/UML#//Port"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_TLsXkKNaEeKfVLrZCD70Rw" alias="Port">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+    </elementImport>
+    <elementImport xmi:id="_TLs-oKNaEeKfVLrZCD70Rw" alias="Property">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_U2PN0KNaEeKfVLrZCD70Rw" name="CheckPoint.Client">
+      <ownedAttribute xmi:id="_pwWQQKNaEeKfVLrZCD70Rw" name="base_Property" association="_pwWQQaNaEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_ZHfnoKNaEeKfVLrZCD70Rw" name="CheckPoint.ProtectedSystem">
+      <ownedAttribute xmi:id="_qUrsYKNaEeKfVLrZCD70Rw" name="base_Property" association="_qUsTcKNaEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Property"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_c3B0cKNaEeKfVLrZCD70Rw" name="CheckPoint.CheckPoint">
+      <ownedAttribute xmi:id="_pS104KNaEeKfVLrZCD70Rw" name="base_Port" association="_pS2b8KNaEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_hhSkIKNaEeKfVLrZCD70Rw" name="CheckPoint.SingleAccessPoint">
+      <ownedComment xmi:id="_jVXJ0KNaEeKfVLrZCD70Rw">
+        <body>(FrameDebut.getProfile().equals(&quot;Authenticator_Profile&quot;))</body>
+      </ownedComment>
+      <ownedAttribute xmi:id="_o3mDUKNaEeKfVLrZCD70Rw" name="base_Port" association="_o3mDUaNaEeKfVLrZCD70Rw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Port"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_o3mDUaNaEeKfVLrZCD70Rw" name="E_CheckPoint.SingleAccessPoint_Port1" memberEnd="_o3mDUqNaEeKfVLrZCD70Rw _o3mDUKNaEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_o3mDUqNaEeKfVLrZCD70Rw" name="extension_CheckPoint.SingleAccessPoint" type="_hhSkIKNaEeKfVLrZCD70Rw" aggregation="composite" association="_o3mDUaNaEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_pS2b8KNaEeKfVLrZCD70Rw" name="E_CheckPoint.CheckPoint_Port1" memberEnd="_pS2b8aNaEeKfVLrZCD70Rw _pS104KNaEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_pS2b8aNaEeKfVLrZCD70Rw" name="extension_CheckPoint.CheckPoint" type="_c3B0cKNaEeKfVLrZCD70Rw" aggregation="composite" association="_pS2b8KNaEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_pwWQQaNaEeKfVLrZCD70Rw" name="E_CheckPoint.Client_Property1" memberEnd="_pwWQQqNaEeKfVLrZCD70Rw _pwWQQKNaEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_pwWQQqNaEeKfVLrZCD70Rw" name="extension_CheckPoint.Client" type="_U2PN0KNaEeKfVLrZCD70Rw" aggregation="composite" association="_pwWQQaNaEeKfVLrZCD70Rw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_qUsTcKNaEeKfVLrZCD70Rw" name="E_CheckPoint.ProtectedSystem_Property1" memberEnd="_qUsTcaNaEeKfVLrZCD70Rw _qUrsYKNaEeKfVLrZCD70Rw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_qUsTcaNaEeKfVLrZCD70Rw" name="extension_CheckPoint.ProtectedSystem" type="_ZHfnoKNaEeKfVLrZCD70Rw" aggregation="composite" association="_qUsTcKNaEeKfVLrZCD70Rw"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Profile>

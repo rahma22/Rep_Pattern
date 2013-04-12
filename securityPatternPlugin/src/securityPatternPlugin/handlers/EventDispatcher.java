@@ -11,15 +11,15 @@ public class EventDispatcher {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		try {
+			// apply Windows Look and Feel to all frames lanched from this class
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
 		        if ("Windows".equals(info.getName())) {
 		            UIManager.setLookAndFeel(info.getClassName());
 		            break;
 		        }
 		    }
-		} catch (Exception e) {
-		    // If Nimbus is not available, you can set the GUI to another look and feel.
-		}
+		} catch (Exception e) {}
+		//lanch the first frame from this event dispatcher
 		new FrameDebut().show();
 	}
 
