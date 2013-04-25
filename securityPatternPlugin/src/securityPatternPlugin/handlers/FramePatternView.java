@@ -17,7 +17,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 import javax.swing.JEditorPane;
 
-public class FramePattronApercu extends JFrame {
+public class FramePatternView extends JFrame {
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class FramePattronApercu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FramePattronApercu frame = new FramePattronApercu();
+					FramePatternView frame = new FramePatternView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class FramePattronApercu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FramePattronApercu() {
+	public FramePatternView() {
 		setTitle("Pattern View");
 		setBounds(100, 100, 689, 665);
 		contentPane = new JPanel();

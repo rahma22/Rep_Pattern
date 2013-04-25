@@ -50,15 +50,13 @@ rule Model {
 			ownedComment <- s.ownedComment,
 			clientDependency <- s.clientDependency,
 			nameExpression <- s.nameExpression,
-			elementImport <- s.elementImport,
 			--packageImport <- s.packageImport,
 			ownedRule <- s.ownedRule,
 			templateParameter <- s.templateParameter,
 			templateBinding <- s.templateBinding,
 			ownedTemplateSignature <- s.ownedTemplateSignature,
 			packageMerge <- s.packageMerge,
-			packagedElement <- s.packagedElement,
-			profileApplication <- s.profileApplication)
+			packagedElement <- s.packagedElement)
 			--End Copy Model Bloc--
 			
 			--Operations on Model--
@@ -66,49 +64,10 @@ rule Model {
 			--Reapply existant Profile--
 for (p in s.getAllAppliedProfiles()) {t.applyProfile(p);}	
 			--End Reapply existant Profile--
-t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='RBAC_Profile') -> first());
-thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = 'RBAC_Profile') -> first();
+t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='CheckPoint_Profile') -> first());
+thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = 'CheckPoint_Profile') -> first();
 }
 		--End Operations on Model--
-}
-
-
-rule Class {
-	--Copy Class Bloc--
-    from s : UML2!"uml::Class" in IN (s.oclIsTypeOf(UML2!"uml::Class"))
-    to t : UML2!"uml::Class" (
-        name <- s.name.debug('Class'),
-        visibility <- s.visibility,
-        isLeaf <- s.isLeaf,
-        isAbstract <- s.isAbstract,
-        isActive <- s.isActive,
-        eAnnotations <- s.eAnnotations,
-        ownedComment <- s.ownedComment,
-        clientDependency <- s.clientDependency,
-        nameExpression <- s.nameExpression,
-        elementImport <- s.elementImport,
-        packageImport <- s.packageImport,
-        ownedRule <- s.ownedRule,
-        templateParameter <- s.templateParameter,
-        templateBinding <- s.templateBinding,
-        ownedTemplateSignature <- s.ownedTemplateSignature,
-        generalization <- s.generalization,
-        powertypeExtent <- s.powertypeExtent,
-        redefinedClassifier <- s.redefinedClassifier,
-        substitution <- s.substitution,
-        representation <- s.representation,
-        collaborationUse <- s.collaborationUse,
-        ownedUseCase <- s.ownedUseCase,
-        useCase <- s.useCase,
-        ownedAttribute <- s.ownedAttribute,
-        ownedConnector <- s.ownedConnector,
-        ownedBehavior <- s.ownedBehavior,
-        classifierBehavior <- s.classifierBehavior,
-        interfaceRealization <- s.interfaceRealization,
-        nestedClassifier <- s.nestedClassifier,
-        ownedOperation <- s.ownedOperation,
-        ownedReception <- s.ownedReception)
-		--End Copy Class Bloc--
 }
 
 rule Component {
@@ -157,56 +116,12 @@ rule Component {
 	--Reapply existant Stereotypes--	
 		for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
 	--End Reapply existant Stereotypes--
+if((s.name = 'Database')and(s.hasStereotype('SingleAccessPoint.ProtectedSystem')))
+{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'CheckPoint.ProtectedSystem'));}
+	
 	}	
 	--End Operations on Component--
 }
-
-rule Property {
-	--Copy Property Bloc--
-    from s : UML2!"uml::Property" in IN (s.oclIsTypeOf(UML2!"uml::Property"))
-    to t : UML2!"uml::Property" (
-       -- __xmiID__ <- s.__xmiID__,
-        name <- s.name.debug('Property'),
-        visibility <- s.visibility,
-        isLeaf <- s.isLeaf,
-        isStatic <- s.isStatic,
-        isOrdered <- s.isOrdered,
-        isUnique <- s.isUnique,
-        isReadOnly <- s.isReadOnly,
-        isDerived <- s.isDerived,
-        isDerivedUnion <- s.isDerivedUnion,
-        aggregation <- s.aggregation,
-        eAnnotations <- s.eAnnotations,
-        ownedComment <- s.ownedComment,
-        clientDependency <- s.clientDependency,
-        nameExpression <- s.nameExpression,
-        type <- s.type,
-        upperValue <- s.upperValue,
-        lowerValue <- s.lowerValue,
-        templateParameter <- s.templateParameter,
-        deployment <- s.deployment,
-        redefinedProperty <- s.redefinedProperty,
-        defaultValue <- s.defaultValue,
-        subsettedProperty <- s.subsettedProperty,
-        association <- s.association,
-        qualifier <- s.qualifier)
-		--End Copy Property Bloc--
-		
-		--Operations on Property--
-		do {
-			--Reapply existant Stereotypes--
-			for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
-			--End Reapply existant Stereotypes--
-if(s.name = 'Patients')
-{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC.User'));}
-if(s.name = 'PatientsManagement')
-{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC.ProtectionObject'));}
-
-
-}	
-		--End Operations on Property--
-}
-
 
 rule Connector {
 	--Copy Connector Bloc--
@@ -292,6 +207,9 @@ rule Port {
 			--Reapply existant Stereotypes--			
 			for (st in s.getAppliedStereotypes()) {t.applyStereotype(st);}			
 			--End Reapply existant Stereotypes--
+if(s.hasStereotype('SingleAccessPoint.SingleAccessPoint'))
+{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'CheckPoint.CheckPoint'));}
+
 }
 		--End Operations on Port--
 }

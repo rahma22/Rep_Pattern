@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -19,8 +20,11 @@ import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.parsers.ParserConfigurationException;
 
-public class FrameDebut extends JFrame {
+import org.xml.sax.SAXException;
+
+public class FrameBegin extends JFrame {
 
 	/**
 	 * 
@@ -30,13 +34,14 @@ public class FrameDebut extends JFrame {
 	private static String profile;
 	private JTextField textField;
 	private static String modelinPath;
+	boolean correctEntries=false;
 	
 	public static String getProfile() {
 		return profile;
 	}
 
 	public static void setProfile(String profile) {
-		FrameDebut.profile = profile;
+		FrameBegin.profile = profile;
 	}
 	
 	public static String getModelinPath() {
@@ -44,7 +49,7 @@ public class FrameDebut extends JFrame {
 	}
 
 	public static void setModelinPath(String modelinPath) {
-		FrameDebut.modelinPath = modelinPath;
+		FrameBegin.modelinPath = modelinPath;
 	}
 	
 	/**
@@ -54,7 +59,7 @@ public class FrameDebut extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrameDebut frame = new FrameDebut();
+					FrameBegin frame = new FrameBegin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +71,7 @@ public class FrameDebut extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FrameDebut() {
+	public FrameBegin() {
 		setTitle("Security patterns");
 		setBounds(100, 100, 372, 348);
 		contentPane = new JPanel();
@@ -85,25 +90,26 @@ public class FrameDebut extends JFrame {
 		 */
 		
 		final JRadioButton rdbtnRBAC = new JRadioButton("RBAC");
+		rdbtnRBAC.setEnabled(false);
 		rdbtnRBAC.setActionCommand("RBAC");
-		rdbtnRBAC.setBounds(6, 30, 80, 23);
+		rdbtnRBAC.setBounds(6, 56, 80, 23);
 		panel.add(rdbtnRBAC);
 		
 		final JRadioButton rdbtnAuthenticator = new JRadioButton("Authenticator");
 		rdbtnAuthenticator.setActionCommand("Authenticator");
-		rdbtnAuthenticator.setBounds(6, 56, 109, 23);
+		rdbtnAuthenticator.setBounds(6, 25, 109, 23);
 		panel.add(rdbtnAuthenticator);
 		
 		final JRadioButton rdbtnCheckPoint = new JRadioButton("CheckPoint");
+		rdbtnCheckPoint.setEnabled(false);
 		rdbtnCheckPoint.setActionCommand("CheckPoint");
-		rdbtnCheckPoint.setBounds(6, 82, 109, 23);
+		rdbtnCheckPoint.setBounds(6, 113, 109, 23);
 		panel.add(rdbtnCheckPoint);
 		
-		final JRadioButton rdbtnMULTILEVEL = new JRadioButton("Multilevel");
-		rdbtnMULTILEVEL.setActionCommand("Multilevel");
-		rdbtnMULTILEVEL.setEnabled(false);
-		rdbtnMULTILEVEL.setBounds(6, 108, 109, 23);
-		panel.add(rdbtnMULTILEVEL);
+		final JRadioButton rdbtnSINGLEACCESSPOINT = new JRadioButton("SingleAccessPoint");
+		rdbtnSINGLEACCESSPOINT.setActionCommand("SingleAccessPoint");
+		rdbtnSINGLEACCESSPOINT.setBounds(6, 87, 129, 23);
+		panel.add(rdbtnSINGLEACCESSPOINT);
 		
 		final JRadioButton rdbtnREFMONITOR = new JRadioButton("Reference Monitor");
 		rdbtnREFMONITOR.setActionCommand("Reference Monitor");
@@ -119,7 +125,7 @@ public class FrameDebut extends JFrame {
 		group.add(rdbtnRBAC);
 		group.add(rdbtnAuthenticator);
 		group.add(rdbtnCheckPoint);
-		group.add(rdbtnMULTILEVEL);
+		group.add(rdbtnSINGLEACCESSPOINT);
 		group.add(rdbtnREFMONITOR);
 		
 		
@@ -133,11 +139,18 @@ public class FrameDebut extends JFrame {
 		
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
+			/*
+			 * *Entries verification
+			 */
+			if(!(textField.getText().equals(""))&&((rdbtnAuthenticator.isSelected())||(rdbtnCheckPoint.isSelected())||(rdbtnRBAC.isSelected())||(rdbtnREFMONITOR.isSelected())||(rdbtnSINGLEACCESSPOINT.isSelected())))correctEntries=true;
+			if(correctEntries==false){JOptionPane.showMessageDialog(null, "Choose your IN Model");}
+			else{
 				hide();
 			/*
 			 * *Open the frame responsible for entry stereotypes choice 
 			 */
-				new FramePattronChoisi().show();
+				if(group.getSelection().getActionCommand().equals("SingleAccessPoint"))new FrameSingleAccessPointchoice().show();
+				else new FramePatternChoice().show();
 			/*
 			 * /Copy initial transformations in the package
 			 */
@@ -158,6 +171,8 @@ public class FrameDebut extends JFrame {
 			//End Copy InitialTransformation
 			
 			}
+			}//End if coorectEntries==true
+		
 		});
 		
 		btnNewButton_1.setBounds(257, 280, 89, 23);
@@ -189,7 +204,6 @@ public class FrameDebut extends JFrame {
 			//RBAC radio button action
 			public void actionPerformed(ActionEvent arg0) {
 				setProfile("RBAC_Profile");
-				rdbtnMULTILEVEL.setEnabled(true);
 				//Changement des labels
 			}
 		});
@@ -204,24 +218,20 @@ public class FrameDebut extends JFrame {
 			// AUTHORIZATION radio button action
 			public void actionPerformed(ActionEvent arg0) {
 				setProfile("CheckPoint_Profile");
-				rdbtnMULTILEVEL.setEnabled(true);
-			//Changement des labels
 			}
 		});
 		
-		rdbtnMULTILEVEL.addActionListener(new ActionListener() {
-			// MULTILEVEL radio button action
+		rdbtnSINGLEACCESSPOINT.addActionListener(new ActionListener() {
+			// SINGLEACCESSPOINT radio button action
 			public void actionPerformed(ActionEvent arg0) {
-				rdbtnCheckPoint.setEnabled(false);
-				rdbtnREFMONITOR.setEnabled(true);
-			//labels Modification
+				setProfile("SingleAccessPoint_Profile");
 			}
 		});
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
-				new FramePattronApercu().show();
+				new FramePatternView().show();
 			}
 		});
 		
@@ -234,6 +244,44 @@ public class FrameDebut extends JFrame {
 				if (filechooser.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
 					modelinPath=filechooser.getSelectedFile().getName();
 					textField.setText(filechooser.getSelectedFile().getName());
+					
+/*
+ * *Organize dependencies between Applied profiles and applicable profiles
+ */
+					ParserUtilities P=new ParserUtilities();
+					
+					try {
+						//If Ahthenticator_Profile is already applied
+						if(P.getProfile(modelinPath).contains("Authenticator_Profile"))
+							{
+							rdbtnAuthenticator.setEnabled(false);
+							rdbtnRBAC.setEnabled(true);
+							}
+						//If SingleAccessPoint_Profile is already applied
+						if(P.getProfile(modelinPath).contains("SingleAccessPoint_Profile"))
+						{
+							rdbtnSINGLEACCESSPOINT.setEnabled(false);
+							rdbtnCheckPoint.setEnabled(true);
+						}
+						//If RBAC_Profile is already applied
+						if(P.getProfile(modelinPath).contains("RBAC_Profile"))
+						{
+							rdbtnRBAC.setEnabled(false);
+							rdbtnAuthenticator.setEnabled(false);
+						}
+						//If CheckPoint_Profile is already applied
+						if(P.getProfile(modelinPath).contains("CheckPoint_Profile"))
+						{
+							rdbtnCheckPoint.setEnabled(false);
+							rdbtnSINGLEACCESSPOINT.setEnabled(false);
+						}
+					} catch (ParserConfigurationException e) {
+						e.printStackTrace();
+					} catch (SAXException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					}		
 			}
 		});

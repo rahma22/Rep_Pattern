@@ -32,7 +32,7 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.resources.util.UMLResourcesUtil;
 import org.xml.sax.SAXException;
 
-public class FramePattronChoisi extends JFrame {
+public class FramePatternChoice extends JFrame {
 
 	/**
 	 * Attributes
@@ -40,8 +40,10 @@ public class FramePattronChoisi extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JTable table;
 	int nombreStereotype=1;
-	String stereotypeApplicationCommande="";
+	String componentStereotypeApplicationCommande="";
 	String profileApplicationCommande="";
+	String portStereotypeApplicationCommande="";
+	boolean trouve=false;
 
 	/**
 	 * Launch the application.
@@ -50,7 +52,7 @@ public class FramePattronChoisi extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FramePattronChoisi frame = new FramePattronChoisi();
+					FramePatternChoice frame = new FramePatternChoice();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -62,7 +64,7 @@ public class FramePattronChoisi extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FramePattronChoisi() {
+	public FramePatternChoice() {
 		/*frame parameters*/
 		setTitle("Pattern Application");
 		setBounds(100, 100, 495, 326); //frame bounds
@@ -70,15 +72,15 @@ public class FramePattronChoisi extends JFrame {
 		
 		/*setting the parameters of the indication label */
 		JLabel lblVeuillezChoisirLes = new JLabel("...");
-		if(FrameDebut.getProfile().equals("RBAC_Profile"))lblVeuillezChoisirLes.setText("Enter User and ProtectionObject stereotypes for RBAC pattern application: ");
-		if(FrameDebut.getProfile().equals("Authenticator_Profile"))lblVeuillezChoisirLes.setText("Enter User stereotypes for Authenticator pattern application: ");
-		if(FrameDebut.getProfile().equals("CheckPoint_Profile"))lblVeuillezChoisirLes.setText("Enter ProtectedSystem stereotypes for CheckPoint pattern application: ");
+		if(FrameBegin.getProfile().equals("RBAC_Profile"))lblVeuillezChoisirLes.setText("Enter User and ProtectionObject stereotypes for RBAC pattern application: ");
+		if(FrameBegin.getProfile().equals("Authenticator_Profile"))lblVeuillezChoisirLes.setText("Enter User stereotypes for Authenticator pattern application: ");
+		if(FrameBegin.getProfile().equals("CheckPoint_Profile"))lblVeuillezChoisirLes.setText("Enter ProtectedSystem stereotypes for CheckPoint pattern application: ");
 		lblVeuillezChoisirLes.setBounds(10, 11, 459, 14);
 		getContentPane().add(lblVeuillezChoisirLes);
 		
 		/*setting the parameters of the "Add Stereotype" button */
 		JButton btnAjouterComposant = new JButton("Add stereotype");
-		btnAjouterComposant.setIcon(new ImageIcon("icons/ajout.png"));
+		btnAjouterComposant.setIcon(new ImageIcon("icons/add.png"));
 		btnAjouterComposant.setBounds(251, 191, 147, 23);
 		getContentPane().add(btnAjouterComposant);
 		
@@ -105,7 +107,7 @@ public class FramePattronChoisi extends JFrame {
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table.getColumnModel().getColumn(1).setMinWidth(25);
 
-		/*setting the parameters of the "Appliquer Patron" button */
+		/*setting the parameters of the "Apply Pattern" button */
 		JButton btnAppliquerPatron = new JButton("Apply Pattern");
 		btnAppliquerPatron.setBounds(336, 254, 133, 23);
 		getContentPane().add(btnAppliquerPatron);
@@ -116,6 +118,7 @@ public class FramePattronChoisi extends JFrame {
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Delete stereotype");
+		btnNewButton_1.setIcon(new ImageIcon("icons/delete.png"));
 		
 		btnNewButton_1.setBounds(78, 191, 147, 23);
 		getContentPane().add(btnNewButton_1);
@@ -127,11 +130,11 @@ public class FramePattronChoisi extends JFrame {
  */
 		ParserUtilities P=new ParserUtilities();
 		try {
-			for(int i=0;i<P.getComponent(FrameDebut.getModelinPath()).size();i++)
-			comboComp.addItem(P.getComponent(FrameDebut.getModelinPath()).get(i));
+			for(int i=0;i<P.getComponent(FrameBegin.getModelinPath()).size();i++)
+			comboComp.addItem(P.getComponent(FrameBegin.getModelinPath()).get(i));
 			//Essai
-			for(int j=0;j<P.getProfile(FrameDebut.getModelinPath()).size();j++)
-				System.out.println(P.getProfile(FrameDebut.getModelinPath()).get(j));
+			for(int j=0;j<P.getProfile(FrameBegin.getModelinPath()).size();j++)
+				System.out.println(P.getProfile(FrameBegin.getModelinPath()).get(j));
 			//End Essai
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -154,22 +157,22 @@ public class FramePattronChoisi extends JFrame {
  */
 		
 		//For RBAC Pattern
-		if(FrameDebut.getProfile().equals("RBAC_Profile"))
+		if(FrameBegin.getProfile().equals("RBAC_Profile"))
 			{
-			comboSter.addItem("RBAC.User");
-			comboSter.addItem("RBAC.ProtectionObject");
+			comboSter.addItem("User");
+			comboSter.addItem("ProtectionObject");
 			}
 		
 		//For Authenticator Pattern
-		if(FrameDebut.getProfile().equals("Authenticator_Profile"))
+		if(FrameBegin.getProfile().equals("Authenticator_Profile"))
 			{
-			comboSter.addItem("Authenticator.User");
+			comboSter.addItem("User");
 			}
 		
 		//For CheckPoint Pattern
-				if(FrameDebut.getProfile().equals("CheckPoint_Profile"))
+				if(FrameBegin.getProfile().equals("CheckPoint_Profile"))
 					{
-					comboSter.addItem("CheckPoint.ProtectedSystem");
+					comboSter.addItem("ProtectedSystem");
 					}
 /*
  * End Filling ComboBox	
@@ -190,13 +193,13 @@ public class FramePattronChoisi extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Delete a row from the table
-			if(FrameDebut.getProfile().equals("RBAC_Profile")){	
+			if(FrameBegin.getProfile().equals("RBAC_Profile")){	
 				if(model.getRowCount()>2){
 					model.removeRow(model.getRowCount()-1);
 					nombreStereotype=nombreStereotype-1;}
 					else JOptionPane.showMessageDialog(null,"you can not delete this row");}
 			
-			if((FrameDebut.getProfile().equals("Authenticator_Profile"))||(FrameDebut.getProfile().equals("CheckPoint_Profile"))){	
+			if((FrameBegin.getProfile().equals("Authenticator_Profile"))||(FrameBegin.getProfile().equals("CheckPoint_Profile"))){	
 				if(model.getRowCount()>1){
 					model.removeRow(model.getRowCount()-1);
 					nombreStereotype=nombreStereotype-1;}
@@ -211,7 +214,7 @@ public class FramePattronChoisi extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				hide();
-				new FrameDebut().show();
+				new FrameBegin().show();
 			}
 		});
 		
@@ -220,30 +223,60 @@ public class FramePattronChoisi extends JFrame {
  */
 		btnAppliquerPatron.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//Verification of table entries
+				String errorMessage="";
+				for(int i=0;i<table.getRowCount();i++){
+					for(int j=0;j<table.getColumnCount();j++){
+						if(table.getValueAt(i, j).equals("None")){
+						trouve=true;	
+						errorMessage=errorMessage+"Fill cell at Row "+(i+1)+"and Column "+(j+1)+"\n";
+						}
+						
+					}
+				}
+				if(trouve)
+				{JOptionPane.showMessageDialog(null, errorMessage);
+				errorMessage="";}
+				//End Verification of table Entries
+				//Applying Transformation if entries are correct
+				else{
 /*
  * *construct the command (applyProfile)to insert into the transformation
  */
 
-		profileApplicationCommande="t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='"+FrameDebut.getProfile()+"') -> first());\n" +
-				"thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = '"+FrameDebut.getProfile()+"') -> first();";
+		profileApplicationCommande="t.applyProfile(UML2!Package.allInstances() -> select(s | s.name ='"+FrameBegin.getProfile()+"') -> first());\n" +
+				"thisModule.entityProfile<-UML2!Package.allInstances() -> select(s | s.name = '"+FrameBegin.getProfile()+"') -> first();";
 /*
  * *construct the command (applyStereotype)to insert into the transformation
  */
-		//For RBAC Pattern
-		if((FrameDebut.getProfile().equals("RBAC_Profile"))||(FrameDebut.getProfile().equals("CheckPoint_Profile"))){
+		//For Authenticator Pattern
+		if(FrameBegin.getProfile().equals("Authenticator_Profile")){
 			for(int i=0;i<nombreStereotype;i++){
-					stereotypeApplicationCommande=stereotypeApplicationCommande+"if(s.name = '"+table.getValueAt(i, 0)+"')\n" +
-					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'"+table.getValueAt(i, 1)+"'));}\n";
+					componentStereotypeApplicationCommande=componentStereotypeApplicationCommande+"if(s.name = '"+table.getValueAt(i, 0)+"')\n" +
+					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'Authenticator."+table.getValueAt(i, 1)+"'));}\n";
 				}
 		}
 		
-		//For Authenticator Pattern
-		if(FrameDebut.getProfile().equals("Authenticator_Profile")){
+		//For RBAC Pattern
+		if(FrameBegin.getProfile().equals("RBAC_Profile")){
 			for(int i=0;i<nombreStereotype;i++){
-					stereotypeApplicationCommande=stereotypeApplicationCommande+"if((s.name = '"+table.getValueAt(i, 0)+"')and(not s.hasStereotype('RBAC.User')))\n" +
-					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'"+table.getValueAt(i, 1)+"'));}\n";
+				componentStereotypeApplicationCommande=componentStereotypeApplicationCommande+"if((s.name = '"+table.getValueAt(i, 0)+"')and(not s.hasStereotype('Authenticator.User')))\n" +
+					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'RBAC."+table.getValueAt(i, 1)+"'));}\n";
 				}
 		}
+		
+		//For CheckPoint Pattern
+		if(FrameBegin.getProfile().equals("CheckPoint_Profile")){
+			// Stereotype Application to components
+			for(int i=0;i<nombreStereotype;i++){
+				componentStereotypeApplicationCommande=componentStereotypeApplicationCommande+"if((s.name = '"+table.getValueAt(i, 0)+"')and(s.hasStereotype('SingleAccessPoint.ProtectedSystem')))\n" +
+					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'CheckPoint."+table.getValueAt(i, 1)+"'));}\n";
+				}
+			//Stereotype Application to ports
+			 portStereotypeApplicationCommande = portStereotypeApplicationCommande+"if(s.hasStereotype('SingleAccessPoint.SingleAccessPoint'))\n" +
+					"{t.applyStereotype(thisModule.getStereotype(thisModule.entityProfile,'CheckPoint.CheckPoint'));}\n";
+		}
+		
 /*
  * * Insert the command into the transformation
  */
@@ -253,11 +286,14 @@ public class FramePattronChoisi extends JFrame {
  */
 		ReplaceString R=new ReplaceString("./src/securityPatternPlugin/handlers/InitialTransformation.atl");
 		try {
-		/*Replace the String "---REMPLACER_PROFIL---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
-		R.MethodeRemplacer("---REPLACE_PROFIL---", profileApplicationCommande);
+		/*Replace the String "---REMPLACER_PROFILE---" by the String profileApplicationCommande (profileApplicationCommande is the ATL command which apply a profile to the input model) */
+		R.MethodeRemplacer("---REPLACE_PROFILE---", profileApplicationCommande);
 				
-		/*Replace the String "---REMPLACER_STEREO---" by the String stereotypeApplicationCommande (stereotypeApplicationCommande is the ATL command which apply stereotypes to the input model) */	
-		R.MethodeRemplacer("---REPLACE_STEREO---",stereotypeApplicationCommande);
+		/*Replace the String "---REPLACE_STEREO_COMPOSANT---" by the String componentStereotypeApplicationCommande (componentStereotypeApplicationCommande is the ATL command which apply stereotypes to components of input model) */	
+		R.MethodeRemplacer("---REPLACE_STEREO_COMPOSANT---",componentStereotypeApplicationCommande);
+		
+		/*Replace the String "---REPLACE_STEREO_PORT---" by the String portStereotypeApplicationCommande (portStereotypeApplicationCommande is the ATL command which apply stereotypes to ports of input model) */	
+		R.MethodeRemplacer("---REPLACE_STEREO_PORT---",portStereotypeApplicationCommande);
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -290,9 +326,9 @@ public class FramePattronChoisi extends JFrame {
 			try {					
 		/*create a new runner (object associated to the transformation class) */
 				InitialTransformation runner = new InitialTransformation();
-				System.out.println(FrameDebut.getModelinPath());
+				System.out.println(FrameBegin.getModelinPath());
 		/*load the inputs required in the transformation (the model & the profile) */
-				runner.loadModels(FrameDebut.getModelinPath(), "SecurityProfile.profile.uml");
+				runner.loadModels(FrameBegin.getModelinPath(), "SecurityProfile.profile.uml");
 					
 		/*Apply the transformation*/
 				runner.doInitialTransformation(new NullProgressMonitor());
@@ -301,7 +337,7 @@ public class FramePattronChoisi extends JFrame {
 				runner.saveModels("MedicalManagementSystemout.uml");
 				
 /*******************************************************************************/									
-				if(FrameDebut.getProfile().equals("RBAC_Profile")){	
+				if(FrameBegin.getProfile().equals("RBAC_Profile")){	
 					//transformations For RBAC Pattern
 					//Second Transformation
 		/*create a new runner (object associated to the transformation class) */
@@ -334,7 +370,7 @@ public class FramePattronChoisi extends JFrame {
 /*******************************************************************************/
 /*******************************************************************************/				
 				
-				if(FrameDebut.getProfile().equals("Authenticator_Profile")){	
+				if(FrameBegin.getProfile().equals("Authenticator_Profile")){	
 					//Transformation for Authenticator Pattern
 					//Second Transformation
 		/*create a new runner (object associated to the transformation class) */
@@ -352,29 +388,8 @@ public class FramePattronChoisi extends JFrame {
 				}//End Transformation for Authenticator Pattern
 				
 				
-/*******************************************************************************/
 /*******************************************************************************/				
-				
-				if(FrameDebut.getProfile().equals("CheckPoint_Profile")){	
-					//Transformation for CheckPoint Pattern
-					//Second Transformation
-		/*create a new runner (object associated to the transformation class) */
-					CheckPointTransformation2 runner2 = new CheckPointTransformation2();
-						
-		/*load the inputs required in the transformation (the model & the profile) */
-				runner2.loadModels("MedicalManagementSystemout.uml", "SecurityProfile.profile.uml");
-						
-		/*Apply the transformation*/
-				runner2.doCheckPointTransformation2(new NullProgressMonitor());
-						
-		/*save the generated output model*/
-				runner2.saveModels("MedicalManagementSystemout.uml");	
-				
-				}//End Transformation for CheckPoint Pattern
-				
-				
-/*******************************************************************************/				
-						
+								
 				} catch (ATLCoreException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -382,7 +397,7 @@ public class FramePattronChoisi extends JFrame {
 				} catch (ATLExecutionException e) {
 					e.printStackTrace();
 				}  
-					//End RBAC_Transformation
+					//End Transformations
 		
 /*
  * Delete temporary files (RBACTransformation.atl and RBACTransformation.asm)
@@ -398,7 +413,8 @@ public class FramePattronChoisi extends JFrame {
 				JOptionPane.showMessageDialog(null,"Transformation terminée");
 							
 				
-			}
+			}//End trouve==false
+		}
 		});
 		
 	}

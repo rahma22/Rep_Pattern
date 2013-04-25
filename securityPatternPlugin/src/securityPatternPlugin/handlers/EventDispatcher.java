@@ -20,7 +20,7 @@ public class EventDispatcher {
 		    }
 		} catch (Exception e) {}
 		//lanch the first frame from this event dispatcher
-		new FrameDebut().show();
+		new FrameBegin().show();
 	}
 
 }
